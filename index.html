@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeulRemote</title>
+<meta name="description" content="See and control Android phones from another phone, a PC or a browser — on the same Wi‑Fi or over the internet.">
+<link rel="icon" href="assets/favicon.png">
+<script>
+(function () {
+  var langs = ["en","ko","ja"], pick = null;
+  try { pick = localStorage.getItem("neulremote.site.lang"); } catch (e) {}
+  if (langs.indexOf(pick) < 0) {
+    var prefs = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < prefs.length && !pick; i++) { var l = String(prefs[i]).slice(0, 2).toLowerCase(); if (langs.indexOf(l) >= 0) pick = l; }
+  }
+  location.replace((pick || "en") + "/" + location.hash);
+})();
+</script>
+</head>
+<body>
+<noscript><p><a href="en/">English</a> · <a href="ko/">한국어</a> · <a href="ja/">日本語</a></p></noscript>
+</body>
+</html>
