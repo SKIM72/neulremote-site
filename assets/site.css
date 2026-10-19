@@ -28,8 +28,9 @@
   color-scheme: light dark;
 }
 
+/* 어두운 테마: 시스템이 다크이고 라이트를 고르지 않았을 때, 또는 다크를 골랐을 때 (앱 테마 고르기 D-074와 같게) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #10151e;
     --surface: #1a212c;
     --surface-2: #2a3444;
@@ -50,6 +51,28 @@
     --shadow-high: 0 2px 6px rgba(0, 0, 0, 0.35), 0 28px 56px rgba(0, 0, 0, 0.5);
   }
 }
+:root[data-theme="dark"] {
+  --bg: #10151e;
+  --surface: #1a212c;
+  --surface-2: #2a3444;
+  --border: #2a3445;
+  --text: #e3e9f4;
+  --muted: #a7b3c7;
+  --accent: #adc8ff;
+  --on-accent: #003066;
+  --accent-container: #1b407a;
+  --on-accent-container: #d9e5ff;
+  --secondary-container: #155148;
+  --on-secondary-container: #a8f3df;
+  --success: #3fcf82;
+  --glow-1: rgba(173, 200, 255, 0.14);
+  --glow-2: rgba(121, 216, 198, 0.08);
+  --glass: rgba(16, 21, 30, 0.7);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-high: 0 2px 6px rgba(0, 0, 0, 0.35), 0 28px 56px rgba(0, 0, 0, 0.5);
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
@@ -149,6 +172,22 @@ p { margin: 0; }
 .lang-menu a[aria-current] { background: var(--accent-container); color: var(--on-accent-container); font-weight: 600; }
 @keyframes pop { from { opacity: 0; transform: translateY(-6px) scale(0.98); } }
 @media (max-width: 480px) { .lang summary span { display: none; } .top-row { gap: 8px; } }
+/* 테마 고르기: 지금 보이는 테마의 아이콘 (해·달) */
+.theme .theme-ic-dark { display: none; }
+:root[data-theme="dark"] .theme .theme-ic-light { display: none; }
+:root[data-theme="dark"] .theme .theme-ic-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme .theme-ic-light { display: none; }
+  :root:not([data-theme="light"]) .theme .theme-ic-dark { display: block; }
+}
+.theme-menu { min-width: 190px; }
+.theme-menu button {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 12px; border: 0; border-radius: 10px;
+  background: none; color: var(--text); font: 15px var(--font); text-align: left; cursor: pointer;
+}
+:lang(ja) .theme-menu button { font-family: var(--font-ja); }
+.theme-menu button:hover { background: var(--surface-2); }
+.theme-menu button[aria-current] { background: var(--accent-container); color: var(--on-accent-container); font-weight: 600; }
 
 /* 첫 화면 */
 .hero { position: relative; padding: 64px 0 72px; overflow: hidden; }

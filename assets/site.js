@@ -4,13 +4,45 @@
     var current = document.documentElement.lang;
     if (current) localStorage.setItem("neulremote.site.lang", current);
   } catch (e) {}
+  // 테마: 시스템 설정 따르기(기본)·라이트·다크 (앱 설정과 같게). 머리의 짧은 스크립트가 그리기 전에 적용한다
+  var root = document.documentElement;
+  function themeChoice() {
+    var t = root.getAttribute("data-theme");
+    return t === "light" || t === "dark" ? t : "system";
+  }
+  function applyTheme(choice) {
+    if (choice === "light" || choice === "dark") root.setAttribute("data-theme", choice);
+    else root.removeAttribute("data-theme");
+    try {
+      if (choice === "system") localStorage.removeItem("neulremote.site.theme");
+      else localStorage.setItem("neulremote.site.theme", choice);
+    } catch (err) {}
+    // 브라우저 위 막대 색도 맞춘다
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+      var light = /light/.test(m.getAttribute("media") || "");
+      m.setAttribute("content", choice === "light" || (choice === "system" && light) ? "#F2F4F8" : choice === "dark" || !light ? "#10151E" : "#F2F4F8");
+    });
+    document.querySelectorAll("[data-theme-choice]").forEach(function (b) {
+      if (b.getAttribute("data-theme-choice") === choice) b.setAttribute("aria-current", "true");
+      else b.removeAttribute("aria-current");
+    });
+  }
+  applyTheme(themeChoice());
+
   document.addEventListener("click", function (e) {
     var link = e.target.closest && e.target.closest(".lang-menu a[data-lang]");
     if (link) {
       try { localStorage.setItem("neulremote.site.lang", link.getAttribute("data-lang")); } catch (err) {}
     }
-    var menu = document.querySelector("details.lang[open]");
-    if (menu && !menu.contains(e.target)) menu.removeAttribute("open");
+    var pick = e.target.closest && e.target.closest("[data-theme-choice]");
+    if (pick) {
+      applyTheme(pick.getAttribute("data-theme-choice"));
+      var box = pick.closest("details");
+      if (box) box.removeAttribute("open");
+    }
+    document.querySelectorAll("details.lang[open]").forEach(function (menu) {
+      if (!menu.contains(e.target)) menu.removeAttribute("open");
+    });
   });
 
   // 머리글: 맨 위에서는 투명, 조금이라도 내리면 흐린 바탕
