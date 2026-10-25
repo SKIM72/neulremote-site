@@ -1,9 +1,11 @@
-// 소개 사이트: 고른 언어 기억, 스크롤로 나타나기·머리글 바탕, 시작하기에서 지금 기기의 플랫폼 칸 표시, 언어 메뉴 바깥을 누르면 닫기
+// 소개 사이트: 고른 언어 기억, 테마, 스크롤로 나타나기·머리글 바탕, 시작하기에서 지금 기기의 플랫폼 표시,
+// 여섯 자리 확인 직접 해 보기 (D-111 ⑤)
 (function () {
   try {
     var current = document.documentElement.lang;
     if (current) localStorage.setItem("neulremote.site.lang", current);
   } catch (e) {}
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // 테마: 시스템 설정 따르기(기본)·라이트·다크 (앱 설정과 같게). 머리의 짧은 스크립트가 그리기 전에 적용한다
   var root = document.documentElement;
   function themeChoice() {
@@ -20,7 +22,7 @@
     // 브라우저 위 막대 색도 맞춘다
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
       var light = /light/.test(m.getAttribute("media") || "");
-      m.setAttribute("content", choice === "light" || (choice === "system" && light) ? "#F2F4F8" : choice === "dark" || !light ? "#10151E" : "#F2F4F8");
+      m.setAttribute("content", choice === "light" || (choice === "system" && light) ? "#F7F8FC" : choice === "dark" || !light ? "#0F141C" : "#F7F8FC");
     });
     document.querySelectorAll("[data-theme-choice]").forEach(function (b) {
       if (b.getAttribute("data-theme-choice") === choice) b.setAttribute("aria-current", "true");
@@ -45,7 +47,7 @@
     });
   });
 
-  // 머리글: 맨 위에서는 투명, 조금이라도 내리면 흐린 바탕
+  // 머리글: 조금이라도 내리면 한 단계 밝은 면
   var top = document.querySelector(".top");
   function onScroll() { if (top) top.classList.toggle("scrolled", window.scrollY > 8); }
   onScroll();
@@ -67,12 +69,53 @@
     items.forEach(function (el) { el.classList.add("in"); });
   }
 
+  // 시작하기: 지금 기기의 플랫폼 (PC 앱이 아직 없으면 PC 브라우저)
   var ua = navigator.userAgent;
   // iPadOS는 데스크톱 Safari처럼 보인다 → 터치가 있으면 iPad
   var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var platform = /Android/.test(ua) ? "android" : ios ? "ios" : /Windows/.test(ua) ? "windows" : /Macintosh/.test(ua) ? "mac" : "browser";
   var card = document.querySelector('.platform[data-platform="' + platform + '"]');
-  // PC 앱이 아직 없으면 PC 브라우저 칸을 권한다
   if (card && card.classList.contains("is-soon")) card = document.querySelector('.platform[data-platform="browser"]');
   if (card) card.classList.add("is-you");
+
+  // 여섯 자리 확인 (같은 Wi‑Fi에서 처음 연결할 때 두 화면에 같은 숫자): 들어올 때마다 새 숫자, 같다고 누르면 페어링
+  var pairing = document.querySelector("[data-pairing]");
+  if (pairing) {
+    var digits = pairing.querySelectorAll("[data-digits]");
+    var pairBtn = pairing.querySelector("[data-pair]");
+    var done = pairing.querySelector("[data-done]");
+    var newDigits = function () {
+      var n = 0;
+      try {
+        var a = new Uint32Array(1);
+        crypto.getRandomValues(a);
+        n = a[0] % 1000000;
+      } catch (e) {
+        n = Math.floor(Math.random() * 1000000);
+      }
+      var s = String(n).padStart(6, "0");
+      return s.slice(0, 3) + " " + s.slice(3);
+    };
+    var show = function () {
+      var value = newDigits();
+      digits.forEach(function (d) {
+        d.classList.add("is-new");
+        setTimeout(function () {
+          d.textContent = value;
+          d.classList.remove("is-new");
+        }, reduce ? 0 : 180);
+      });
+      pairing.classList.remove("is-paired");
+      if (pairBtn) pairBtn.hidden = false;
+      if (done) done.hidden = true;
+    };
+    show();
+    if (pairBtn) pairBtn.addEventListener("click", function () {
+      pairing.classList.add("is-paired");
+      pairBtn.hidden = true;
+      if (done) done.hidden = false;
+    });
+    var again = pairing.querySelector("[data-again]");
+    if (again) again.addEventListener("click", show);
+  }
 })();
