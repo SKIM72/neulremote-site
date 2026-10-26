@@ -164,6 +164,7 @@ button { font: inherit; }
 :lang(ja) .text-link { font-family: var(--font-ja); }
 
 /* ---------- 머리글: 맨 위에서는 투명, 내리면 흐리게 비치는 면 ---------- */
+:root { --top-h: 68px; }
 .top {
   position: sticky; top: 0; z-index: 10;
   border-bottom: 1px solid transparent;
@@ -175,7 +176,7 @@ button { font: inherit; }
   backdrop-filter: saturate(180%) blur(18px);
   border-bottom-color: var(--border);
 }
-.top-row { display: flex; align-items: center; gap: 16px; height: 68px; }
+.top-row { display: flex; align-items: center; gap: 16px; height: var(--top-h); }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; margin-right: auto; }
 .brand:hover { text-decoration: none; }
 .brand img { border-radius: 8px; }
@@ -219,7 +220,9 @@ button { font: inherit; }
 @media (max-width: 480px) { .top .btn-sm { display: none; } }
 
 /* ---------- 첫 화면 (예전 구성): 칩·큰 제목·설명·버튼 둘, 오른쪽에 기울어진 폰 두 대(실제 S9 화면) ---------- */
-.hero { position: relative; padding: 64px 0 96px; overflow: hidden; }
+/* 머리글 높이(+ 아래 1px 선)만큼 위로 올려 페이지 맨 위에서 시작한다: 빛이 투명한 머리글 뒤까지 이어져
+   머리글 아래에서 잘린 경계가 줄처럼 보이지 않게 (사용자 의견 2026-10-26) */
+.hero { position: relative; margin-top: calc(-1 * (var(--top-h) + 1px)); padding: calc(64px + var(--top-h) + 1px) 0 96px; overflow: hidden; }
 /* 은은한 빛 */
 .hero::before {
   content: ""; position: absolute; inset: -20% -10% auto auto; width: 70%; height: 120%; z-index: -1; pointer-events: none;
@@ -248,7 +251,7 @@ button { font: inherit; }
 .phone-front { right: 8%; top: 0; z-index: 2; --r: 3deg; transform: rotate(var(--r)); }
 .phone-back { left: 4%; top: 64px; --r: -6deg; transform: rotate(var(--r)); }
 @media (max-width: 900px) {
-  .hero { padding-top: 40px; }
+  .hero { padding-top: calc(40px + var(--top-h) + 1px); }
   .hero-row { grid-template-columns: 1fr; gap: 44px; }
   .hero-art { height: 470px; max-width: 460px; width: 100%; margin: 0 auto; }
   .hero-art .phone { width: 200px; }
