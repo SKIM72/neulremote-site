@@ -448,6 +448,9 @@ button { font: inherit; }
 @media (max-width: 900px) { .g-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .g-cards { grid-template-columns: 1fr; } }
 .card-icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; flex: none; background: var(--accent-soft); color: var(--accent); }
+/* 사용 안내 카드·칩의 플랫폼 상표 (시작하기 카드와 같은 모양, 놓이는 곳에 맞춰 작게) */
+.card-icon .mark { width: 28px; height: 28px; }
+.card-icon .mark-wide { width: 42px; height: auto; }
 .g-card {
   display: flex; flex-direction: column; gap: 10px; padding: 28px; border-radius: var(--radius-group);
   background: var(--surface); color: var(--ink); border: 1px solid var(--border); box-shadow: var(--shadow);
@@ -486,6 +489,8 @@ button { font: inherit; }
 .g-others div { display: flex; flex-wrap: wrap; gap: 8px; }
 .g-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); color: var(--ink); font-size: 15px; font-weight: 500; transition: background-color 0.2s ease; }
 .g-chip:hover { text-decoration: none; background: var(--accent-soft); color: var(--on-accent-soft); }
+.g-chip .mark { width: 18px; height: 18px; flex: none; }
+.g-chip .mark-wide { width: 52px; height: auto; }
 
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
 
