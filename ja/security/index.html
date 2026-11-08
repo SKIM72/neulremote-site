@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeulRemote のセキュリティ — NeulRemote</title>
+<meta name="description" content="別のスマホ・PC・ブラウザからAndroidの画面を見て操作。同じWi‑Fiでも、インターネット経由でも。">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F7F8FC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F141C" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="NeulRemote のセキュリティ — NeulRemote">
+<meta property="og:description" content="別のスマホ・PC・ブラウザからAndroidの画面を見て操作。同じWi‑Fiでも、インターネット経由でも。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NeulRemote">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://neulremote.com/ja/security/">
+<meta property="og:image" content="https://neulremote.com/assets/og/og-ja.png?v=6e25ee77">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NeulRemote — 別のスマホからAndroidを遠隔操作している画面">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NeulRemote のセキュリティ — NeulRemote">
+<meta name="twitter:description" content="別のスマホ・PC・ブラウザからAndroidの画面を見て操作。同じWi‑Fiでも、インターネット経由でも。">
+<meta name="twitter:image" content="https://neulremote.com/assets/og/og-ja.png?v=6e25ee77">
+<link rel="alternate" hreflang="en" href="https://neulremote.com/en/security/">
+<link rel="alternate" hreflang="ko" href="https://neulremote.com/ko/security/">
+<link rel="alternate" hreflang="ja" href="https://neulremote.com/ja/security/">
+<link rel="alternate" hreflang="x-default" href="https://neulremote.com/en/security/">
+<link rel="canonical" href="https://neulremote.com/ja/security/">
+<link rel="icon" href="../../assets/favicon.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/fonts/jp/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>var d=document.documentElement;d.classList.add("js");try{var m=localStorage.getItem("neulremote.site.theme");if(m==="light"||m==="dark")d.setAttribute("data-theme",m)}catch(e){}</script>
+<script src="../../assets/site.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="../../ja/"><img src="../../assets/icon.png" alt="" width="28" height="28"><span>NeulRemote</span></a>
+    <nav class="nav" aria-label="NeulRemote">
+      <a href="../../ja/#features">機能</a>
+      <a href="../../ja/guide/">使い方</a>
+      <a href="../../ja/#faq">よくある質問</a>
+    </nav>
+    <details class="lang theme">
+      <summary aria-label="テーマ"><svg class="ic theme-ic theme-ic-light" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"/><path d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V4C12.75 4.41421 12.4142 4.75 12 4.75C11.5858 4.75 11.25 4.41421 11.25 4V2C11.25 1.58579 11.5858 1.25 12 1.25ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H4C4.41421 11.25 4.75 11.5858 4.75 12C4.75 12.4142 4.41421 12.75 4 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM19.25 12C19.25 11.5858 19.5858 11.25 20 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H20C19.5858 12.75 19.25 12.4142 19.25 12ZM12 19.25C12.4142 19.25 12.75 19.5858 12.75 20V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V20C11.25 19.5858 11.5858 19.25 12 19.25Z" fill-rule="evenodd"/><path d="M3.66919 3.7156C3.94869 3.4099 4.42309 3.38867 4.72879 3.66817L6.95081 5.69975C7.25651 5.97925 7.27774 6.45365 6.99824 6.75935C6.71874 7.06505 6.24434 7.08629 5.93865 6.80679L3.71663 4.7752C3.41093 4.4957 3.38969 4.0213 3.66919 3.7156Z" opacity="0.5"/><path d="M20.3319 3.7156C20.6114 4.0213 20.5902 4.4957 20.2845 4.7752L18.0624 6.80679C17.7567 7.08629 17.2823 7.06505 17.0028 6.75935C16.7233 6.45365 16.7446 5.97925 17.0503 5.69975L19.2723 3.66817C19.578 3.38867 20.0524 3.4099 20.3319 3.7156Z" opacity="0.5"/><path d="M17.0261 17.0247C17.319 16.7318 17.7938 16.7319 18.0867 17.0248L20.3087 19.2471C20.6016 19.54 20.6016 20.0148 20.3087 20.3077C20.0158 20.6006 19.5409 20.6006 19.248 20.3076L17.026 18.0854C16.7331 17.7924 16.7332 17.3176 17.0261 17.0247Z" opacity="0.5"/><path d="M6.97521 17.0249C7.2681 17.3177 7.2681 17.7926 6.97521 18.0855L4.75299 20.3077C4.46009 20.6006 3.98522 20.6006 3.69233 20.3077C3.39943 20.0148 3.39943 19.54 3.69233 19.2471L5.91455 17.0248C6.20744 16.732 6.68232 16.732 6.97521 17.0249Z" opacity="0.5"/></svg><svg class="ic theme-ic theme-ic-dark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.0004C22 17.5232 17.5228 22.0004 12 22.0004C10.8358 22.0004 9.71801 21.8014 8.67887 21.4357C8.24138 20.3772 8 19.217 8 18.0004C8 15.7792 8.80467 13.7459 10.1384 12.1762C11.31 13.8818 13.2744 15.0004 15.5 15.0004C17.8615 15.0004 19.9289 13.741 21.0672 11.8572C21.3065 11.4612 22 11.5377 22 12.0004Z" opacity="0.5" fill-rule="evenodd"/><path d="M2 12C2 16.3586 4.78852 20.0659 8.67887 21.4353C8.24138 20.3768 8 19.2166 8 18C8 15.7788 8.80467 13.7455 10.1384 12.1758C9.42027 11.1303 9 9.86422 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12Z"/></svg></summary>
+      <div class="lang-menu theme-menu">
+        <button type="button" data-theme-choice="system">システム設定に従う</button>
+        <button type="button" data-theme-choice="light">ライト</button>
+        <button type="button" data-theme-choice="dark">ダーク</button>
+      </div>
+    </details>
+    <details class="lang">
+      <summary aria-label="言語"><span>日本語</span><svg class="ic ic-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.3704 15.8351L18.8001 9.20467C19.2013 8.79094 18.9581 8 18.4297 8H5.5703C5.04189 8 4.79869 8.79094 5.1999 9.20467L11.6296 15.8351C11.8427 16.0549 12.1573 16.0549 12.3704 15.8351Z"/></svg></summary>
+      <div class="lang-menu"><a href="../../en/security/" data-lang="en" lang="en">English</a><a href="../../ko/security/" data-lang="ko" lang="ko">한국어</a><a href="../../ja/security/" data-lang="ja" lang="ja" aria-current="true">日本語</a></div>
+    </details>
+    <a class="btn btn-primary btn-sm" href="../../ja/#start">はじめる</a>
+  </div>
+</header>
+<main class="doc wrap narrow">
+  <h1>NeulRemote のセキュリティ</h1>
+  <p>NeulRemote は別の端末の画面を見て操作するアプリなので、セキュリティを最優先にしています。データがどこへ行き、サーバーが何を見られて何を見られないかをまとめました。</p>
+  <section><h2>画面・音声・入力は端末同士で暗号化</h2><ul><li>画面、音声、タッチやキーボードの入力、ファイル、音声通話は WebRTC（DTLS・SRTP）で 2 台の端末の間を暗号化されたまま行き来します。鍵を持っているのはその 2 台だけです。</li><li>インターネット接続で 2 台が直接つながらないときは NeulRemote の中継サーバー（TURN）を通ります。このときも暗号化されたまま転送するだけなので、サーバーは内容を見ることも保存することもできません。</li></ul></section>
+<section><h2>サーバーが知っていること・知らないこと</h2><ul><li><b>知っていること</b>: アカウント（メールアドレス・名前・パスワードの一方向ハッシュ）、登録した端末と状態（機種・Android バージョン・バッテリー・最終接続）、2 台をつなぐのに必要な情報（どの端末がいつ接続を求めたか）。</li><li><b>知らないこと</b>: 画面の内容、音声、入力した文字、送ったファイル、通話の内容。パスワードそのものも知りません。詳しくは<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</li></ul></section>
+<section><h2>サーバーなしで使う方法</h2><ul><li>同じ Wi‑Fi で接続するか USB で接続すると、アカウントもサーバーも使わずに端末同士で直接つながります。同じ Wi‑Fi では最初の 1 回だけ、両方の画面の 6 桁の数字が同じか確かめてペアリングします。</li></ul></section>
+<section><h2>「中継サーバーを使わない」</h2><ul><li>アプリ（設定 → リモート画面）とウェブアプリ（설정 → 원격 화면 → 중계 서버 거치지 않기）で<b>中継サーバーを使わない</b>をオンにすると、インターネット接続でも中継を使わず端末同士で直接だけつなぎます。</li><li>直接接続がふさがれたネットワーク（一部の LTE・会社や学校の Wi‑Fi）ではオンのままだとつながらないので、そのときはオフにしてください。操作されるスマホも最新のアプリである必要があります。</li></ul></section>
+<section><h2>操作されるスマホはいつも持ち主が管理</h2><ul><li>リモート待機はスマホの持ち主が自分でオンにする必要があり、オンの間は通知がいつも表示され、通知からすぐに止められます。</li><li>スマホをアカウントに登録するには、そのスマホに表示されるコードが必要です。</li><li>リモートヘルプのリンクは 1 回だけ・10 分間使え、相手が許可したときだけつながり、接続が終わると権限もなくなります。持ち主がいつも見られるよう、ヘルプリンクの接続では画面オフ・クリップボードの取得・root 機能は使えません。</li><li>ロック画面の回避、システムの同意画面の自動クリック、PIN やパスワードの保存は行いません。</li></ul></section>
+<section><h2>アカウントの保護</h2><ul><li>はじめての端末でメールアドレスとパスワードでログインすると、アカウントのメールに送った 6 桁のコードをもう一度確認します。</li><li>パスワードを変えると、他の端末のログインはすべて解除されます。</li><li>Google でログインすると、Google アカウントの 2 段階認証がそのまま適用されます。Google ログインの連携や解除はアカウントのメールでお知らせします。</li><li>NeulRemote がメールや電話でパスワードや確認コードを尋ねることはありません。</li></ul></section>
+<section><h2>サーバーの運用</h2><ul><li>すべての通信は HTTPS、パスワードは一方向ハッシュだけを保存、サーバーはファイアウォールの内側で鍵だけで管理し、バックアップは 30 日後に自動で削除します。</li></ul></section>
+<section><h2>セキュリティの問題を知らせる</h2><ul><li>問題を見つけたら <a href="mailto:support@neulremote.com">support@neulremote.com</a> までお知らせください。</li></ul></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="../../ja/"><img src="../../assets/icon.png" alt="" width="28" height="28"><span>NeulRemote</span></a>
+      <p>Androidスマホのリモート操作</p>
+    </div>
+    <nav class="foot-col" aria-label="製品">
+      <h2>製品</h2>
+      <a href="../../ja/#features">機能</a>
+      <a href="../../ja/#start">はじめる</a>
+      <a href="../../ja/#faq">よくある質問</a>
+    </nav>
+    <nav class="foot-col" aria-label="サポート">
+      <h2>サポート</h2>
+      <a href="../../ja/guide/">使い方</a>
+      <a href="mailto:support@neulremote.com">お問い合わせ</a>
+      <a href="../../ja/security/">セキュリティ</a>
+      <a href="../../ja/privacy/">プライバシーポリシー</a>
+      <a href="../../ja/delete-account/">アカウントの削除</a>
+    </nav>
+  </div>
+  <div class="wrap foot-note"><p>© 2026 NeulRemote</p><p>AndroidはGoogle LLCの商標です。Apple、iPhone、iPad、macOSはApple Inc.の、WindowsはMicrosoftの商標です。 アイコン: Solar by 480 Design (CC BY 4.0) · フォント: Pretendard JP (SIL OFL 1.1)</p></div>
+</footer>
+</body>
+</html>
