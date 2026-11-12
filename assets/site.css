@@ -1,5 +1,7 @@
 /* NeulRemote 소개 사이트 (D-111 ⑤, 사용자 의견 2026-10-25): 첫 화면은 예전 구성(칩·큰 제목·기울어진 폰 두 대·옅은 빛)을 살리고,
-   나머지는 Jump Desktop처럼 밝은 바탕·가운데 제목·카드 격자·짙은 남색 띠·글과 실제 화면 번갈아·그라데이션 마무리 카드로 깔끔하게.
+   나머지는 밝은 바탕·가운데 제목·글과 실제 화면 번갈아로 깔끔하게.
+   다듬기 (2026-11-10, 사용자 고름): 사진은 모두 실제 폰 프레임에(장면 사진은 확대한 폰), 실제 앱 화면으로 만든 연결 시연,
+   Jump Desktop과 닮은 남색·보라 띠·그라데이션 마무리 상자·남색 바닥은 밝게, 항목 앞 아이콘 칸은 뺌.
    앱의 색·글꼴(Pretendard)을 쓰고, 시스템 테마를 따르며 머리글에서 라이트·다크를 고를 수 있다.
    카드는 누를 수 있는 것처럼 움직이지 않는다 — 누르는 것은 버튼·링크와 여섯 자리 확인뿐 */
 :root {
@@ -20,20 +22,62 @@
   --glass: rgba(247, 248, 252, 0.78);
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
   --shadow-high: 0 2px 6px rgba(16, 24, 40, 0.08), 0 28px 56px rgba(16, 24, 40, 0.18);
-  /* 기능 띠: 짙은 남색 → 보라 */
-  --band: linear-gradient(125deg, #0c2550 0%, #1b3170 50%, #3a2b72 100%);
-  --band-ink: #f2f5fb;
-  --band-muted: rgba(226, 233, 246, 0.78);
-  --band-card: rgba(255, 255, 255, 0.06);
-  --band-line: rgba(255, 255, 255, 0.1);
-  --band-icon: #adc8ff;
-  /* 마무리 카드·바닥 */
-  --cta-bg: linear-gradient(120deg, #d6e6ff 0%, #e4defd 55%, #f3dcf6 100%);
-  --foot-bg: #0c1f3d;
-  --foot-ink: #e7edf8;
-  --foot-muted: rgba(214, 224, 242, 0.72);
   /* 그린 폰·모니터 몸체와 앱 다크 화면 (두 테마 같다) */
   --device: #0b0e13;
+  --device-edge: #3a414d;
+  --device-key: #2a313c;
+  --camera: #05070a;
+  --ios-home: rgba(255, 255, 255, 0.72);
+  --lens: #1f3c4a;
+  --shadow-zoom: 0 18px 40px -16px rgba(16, 24, 40, 0.38);
+  /* 시연의 어두운 화면 위 포커스 고리 (앱 화면 위에서도 보이는 주황 하나) */
+  --tap: #ff9f1c;
+  /* 연결 시연의 가상 화면 (D-202, 사이트 테마와 따로: 폰 화면이라 두 테마에서 같다). vp = 가상 Android 밝은 테마, vpd = 어두운 테마 */
+  --vp-bg: #f1f3f8;
+  --vp-surface: #ffffff;
+  --vp-ink: #1b1f29;
+  --vp-muted: #5a6373;
+  --vp-line: #c5ccd9;
+  --vp-press: rgba(27, 31, 41, 0.09);
+  --vp-accent: #2b63d9;
+  --vp-knob: #ffffff;
+  --vpd-bg: #11141a;
+  --vpd-surface: #1d222c;
+  --vpd-ink: #e7eaf1;
+  --vpd-muted: #a3acbc;
+  --vpd-line: #4c5465;
+  --vpd-press: rgba(231, 234, 241, 0.12);
+  --vpd-accent: #9dbbff;
+  --vpd-knob: #11141a;
+  --vp-wall-1: #0d1524;
+  --vp-wall-2: rgba(132, 176, 255, 0.6);
+  --vp-wall-3: rgba(214, 230, 255, 0.34);
+  --vp-on-wall: #ffffff;
+  --vp-dock: rgba(255, 255, 255, 0.16);
+  --vp-on-icon: #ffffff;
+  --vp-c1: #e8710a;
+  --vp-c2: #5d6979;
+  --vp-c3: #7a5ad4;
+  --vp-c4: #456bd6;
+  --vp-c5: #1c9a57;
+  --vp-c6: #2a7ddc;
+  --vp-c7: #d64a40;
+  --vp-c8: #c98a06;
+  --vd-card: #19212e;
+  --vd-line: rgba(255, 255, 255, 0.08);
+  --vd-bar: #0a0e15;
+  --vd-key: rgba(255, 255, 255, 0.07);
+  --vd-end: #4b1f25;
+  --vd-on-end: #ff9a9a;
+  --vd-touch: rgba(126, 146, 178, 0.5);
+  --vd-touch-edge: rgba(255, 255, 255, 0.85);
+  /* 시연 손가락: 어느 화면 위에서도 보이게 흰 손 + 어두운 테두리 그림자 */
+  --finger: #ffffff;
+  --finger-edge: rgba(15, 23, 42, 0.55);
+  --mask: #000;
+  --accent-glow: rgba(34, 93, 199, 0.55);
+  --shine: rgba(255, 255, 255, 0.28);
+  --screen-ok: #3fcf82;
   --screen: #10151e;
   --screen-ink: #e3e9f4;
   --screen-muted: #a7b3c7;
@@ -41,6 +85,10 @@
   --screen-on-accent: #003066;
   --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-ja: "Pretendard JP Variable", "Pretendard JP", -apple-system, BlinkMacSystemFont, system-ui, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  /* 가상 Android 화면은 기기 기본 글꼴: 조각난 웹폰트(Pretendard 동적 서브셋)는 글자 크기가 바뀔 때마다 새 크기를 준비하느라
+     막대를 끄는 동안 프레임이 34ms(일본어 47ms)였다 → 기본 글꼴은 16.7ms. 폰 화면이라 기본 글꼴이 어울리기도 한다 */
+  --vp-font: system-ui, -apple-system, Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", sans-serif;
+  --vp-font-ja: system-ui, -apple-system, Roboto, "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --gutter: 24px;
   --radius: 16px;
@@ -66,10 +114,10 @@
     --glass: rgba(15, 20, 28, 0.76);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
     --shadow-high: 0 2px 6px rgba(0, 0, 0, 0.35), 0 28px 56px rgba(0, 0, 0, 0.5);
-    --band: linear-gradient(125deg, #0d1d3b 0%, #172654 50%, #2b2157 100%);
-    --cta-bg: linear-gradient(120deg, #1a2d55 0%, #262a5a 55%, #3a2552 100%);
-    --foot-bg: #0a0f17;
     --device: #05070a;
+    --device-edge: #46505f;
+    --device-key: #343c49;
+    --shadow-zoom: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
   }
 }
 :root[data-theme="dark"] {
@@ -90,10 +138,10 @@
   --glass: rgba(15, 20, 28, 0.76);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-high: 0 2px 6px rgba(0, 0, 0, 0.35), 0 28px 56px rgba(0, 0, 0, 0.5);
-  --band: linear-gradient(125deg, #0d1d3b 0%, #172654 50%, #2b2157 100%);
-  --cta-bg: linear-gradient(120deg, #1a2d55 0%, #262a5a 55%, #3a2552 100%);
-  --foot-bg: #0a0f17;
   --device: #05070a;
+  --device-edge: #46505f;
+  --device-key: #343c49;
+  --shadow-zoom: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
 }
 :root[data-theme="light"] { color-scheme: light; }
 :root[data-theme="dark"] { color-scheme: dark; }
@@ -110,8 +158,8 @@ body {
   letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
+html, body { overflow-x: clip; }
 :lang(ja) body, body:lang(ja) { font-family: var(--font-ja); letter-spacing: 0; }
 :lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
 /* 일본어: 구절 단위로 줄을 바꾼다 (지원하는 브라우저만, 아니면 보통 줄바꿈) */
@@ -129,6 +177,7 @@ button { font: inherit; }
 @media (max-width: 480px) { :root { --gutter: 16px; } }
 
 .ic { width: 24px; height: 24px; flex: none; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .ic-sm { width: 18px; height: 18px; }
 
 /* ---------- 버튼: 앱과 같은 알약 — 채운 파랑·옅은 파랑·테두리 ---------- */
@@ -143,11 +192,11 @@ button { font: inherit; }
 .btn:hover { text-decoration: none; transform: translateY(-1px); }
 .btn:active { transform: scale(0.97); }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
-.btn-primary:hover { box-shadow: 0 10px 24px -6px rgba(34, 93, 199, 0.55); }
+.btn-primary:hover { box-shadow: 0 10px 24px -6px var(--accent-glow); }
 /* 지나가는 빛 */
 .btn-primary::after {
   content: ""; position: absolute; inset: 0; transform: translateX(-120%);
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  background: linear-gradient(110deg, transparent 30%, var(--shine) 50%, transparent 70%);
   transition: transform 0.7s var(--ease);
 }
 .btn-primary:hover::after { transform: translateX(120%); }
@@ -219,6 +268,43 @@ button { font: inherit; }
 /* 폰 너비: 머리글 주 버튼은 뺀다 (첫 화면 바로 아래에 같은 버튼) */
 @media (max-width: 480px) { .top .btn-sm { display: none; } }
 
+/* ---------- 폰 프레임 (사용자 견본 2026-11-10): 얇은 테두리·가운데 카메라 구멍·옆면 버튼 셋·그림자 ----------
+   크기는 감싼 요소의 너비를 따른다 (cqi = 프레임 너비의 1%) */
+.device { margin: 0; container-type: inline-size; }
+.device-body {
+  position: relative; padding: 2.4cqi; border-radius: 13cqi; background: var(--device);
+  box-shadow: inset 0 0 0 max(1px, 0.4cqi) var(--device-edge), var(--shadow-high);
+}
+.device-body::before, .device-body::after { content: ""; position: absolute; width: 1.2cqi; background: var(--device-key); }
+.device-body::before { left: -1.1cqi; top: 26%; height: 8%; border-radius: 0.8cqi 0 0 0.8cqi; }
+.device-body::after {
+  right: -1.1cqi; top: 13%; height: 31%; border-radius: 0 0.8cqi 0.8cqi 0;
+  background: linear-gradient(var(--device-key) 0 45%, transparent 45% 55%, var(--device-key) 55% 100%);
+}
+.device-screen { position: relative; overflow: hidden; border-radius: 10.6cqi; background: var(--screen); }
+.device-screen > img { width: 100%; height: auto; display: block; }
+/* 카메라 구멍: 상태 표시줄 가운데 (사진 속 그 자리는 비어 있다) */
+.device-screen::after {
+  content: ""; position: absolute; z-index: 5; left: 50%; top: 1.5cqi; width: 3.8cqi; aspect-ratio: 1; border-radius: 50%;
+  transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(circle, var(--lens) 0 26%, var(--camera) 34% 100%);
+}
+
+/* 아이폰 느낌 테두리 (여섯 가지 길 그림): 알약 모양 홈이 화면(원격 화면) 위에 겹치고, 아래 홈 막대, 왼쪽 음량 버튼 둘·오른쪽 전원 하나.
+   사용자 의견: 알약 홈이 화면을 가려야 아이폰처럼 보인다 (위에 검은 띠를 따로 두면 그냥 검은 폰). 웹 앱 사진에는 홈 막대 자리가 없어
+   아래에만 검은 띠를 둔다. 특정 기종을 그대로 그리지 않는다 */
+.device.is-ios .device-body { padding: 2.8cqi; border-radius: 16cqi; }
+.device.is-ios .device-body::before {
+  top: 22%; height: 17%;
+  background: linear-gradient(var(--device-key) 0 44%, transparent 44% 56%, var(--device-key) 56% 100%);
+}
+.device.is-ios .device-body::after { top: 27%; height: 13%; background: var(--device-key); }
+.device.is-ios .device-screen { padding: 0 0 9cqi; border-radius: 13.2cqi; background: var(--mask); }
+.device.is-ios .device-screen::after { top: 3cqi; width: 30cqi; height: 8.6cqi; aspect-ratio: auto; border-radius: 999px; background: var(--camera); }
+.device.is-ios .device-screen::before {
+  content: ""; position: absolute; z-index: 5; left: 33%; bottom: 2.6cqi; width: 34%; height: 1.4cqi; border-radius: 999px; background: var(--ios-home);
+}
+
 /* ---------- 첫 화면 (예전 구성): 칩·큰 제목·설명·버튼 둘, 오른쪽에 기울어진 폰 두 대(실제 S9 화면) ---------- */
 /* 머리글 높이(+ 아래 1px 선)만큼 위로 올려 페이지 맨 위에서 시작한다: 빛이 투명한 머리글 뒤까지 이어져
    머리글 아래에서 잘린 경계가 줄처럼 보이지 않게 (사용자 의견 2026-10-26) */
@@ -229,7 +315,7 @@ button { font: inherit; }
   background: radial-gradient(closest-side, var(--glow-1), transparent), radial-gradient(closest-side at 30% 70%, var(--glow-2), transparent);
   filter: blur(10px);
 }
-.hero-row { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero-row { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; }
 .eyebrow {
   display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
   background: var(--accent-soft); color: var(--on-accent-soft);
@@ -242,23 +328,18 @@ button { font: inherit; }
 .hero-note { display: flex; align-items: center; gap: 8px; margin-top: 22px; color: var(--muted); font-size: 14px; }
 .hero-note .ic { color: var(--ok); }
 .hero-art { position: relative; height: 580px; }
-.phone {
-  margin: 0; overflow: hidden; background: var(--device);
-  border-radius: 36px; border: 7px solid var(--device); box-shadow: var(--shadow-high);
-}
-.phone img { width: 100%; height: auto; }
-.hero-art .phone { position: absolute; width: 246px; }
+.hero-art .phone { position: absolute; width: 252px; }
 .phone-front { right: 8%; top: 0; z-index: 2; --r: 3deg; transform: rotate(var(--r)); }
 .phone-back { left: 4%; top: 64px; --r: -6deg; transform: rotate(var(--r)); }
 @media (max-width: 900px) {
   .hero { padding-top: calc(40px + var(--top-h) + 1px); }
-  .hero-row { grid-template-columns: 1fr; gap: 44px; }
+  .hero-row { grid-template-columns: minmax(0, 1fr); gap: 44px; }
   .hero-art { height: 470px; max-width: 460px; width: 100%; margin: 0 auto; }
   .hero-art .phone { width: 200px; }
 }
 @media (max-width: 480px) {
   .hero-art { height: 400px; }
-  .hero-art .phone { width: 168px; border-width: 6px; border-radius: 30px; }
+  .hero-art .phone { width: 172px; }
   .phone-front { right: 2%; }
   .phone-back { left: 2%; }
   .hero-cta .btn { flex: 1 1 auto; }
@@ -272,17 +353,272 @@ button { font: inherit; }
 .section-head p, .section-sub { margin-top: 16px; color: var(--muted); font-size: 18px; }
 @media (max-width: 600px) { .section { padding: 80px 0; } .section-head p, .section-sub { font-size: 16px; } }
 
-/* ---------- 기능: 짙은 남색 띠 안의 카드 여섯 ---------- */
-.band { background: var(--band); color: var(--band-ink); padding: 104px 0 112px; }
-.band .section-head h2 { color: var(--band-ink); }
-.band .section-head p { color: var(--band-muted); }
-.band-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 52px; }
-.band-card { background: var(--band-card); border: 1px solid var(--band-line); border-radius: var(--radius-group); padding: 28px; }
-.band-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: rgba(173, 200, 255, 0.14); color: var(--band-icon); }
-.band-card h3 { margin-top: 20px; font-size: 19px; color: var(--band-ink); }
-.band-card p { margin-top: 8px; color: var(--band-muted); font-size: 16px; line-height: 1.65; }
-@media (max-width: 900px) { .band-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .band { padding: 80px 0; } .band-grid { grid-template-columns: 1fr; margin-top: 40px; } }
+/* ---------- 연결 시연 (가상 화면, D-202): 두 폰을 나란히. 왼쪽 = 내 폰(직접 만진다), 오른쪽 = 조작받는 폰(따라 움직인다) ----------
+   녹화·단계 설명 없이 직접 그린 가상 Android. 크기는 모두 폰 너비 기준(cqi)이라 폰이 작아져도 비율이 같다.
+   스크립트가 없으면 연결 전 모습(장치 목록과 홈 화면) */
+.demo { margin-top: 52px; }
+.demo-stage {
+  display: grid; grid-template-columns: minmax(0, 300px) minmax(96px, 170px) minmax(0, 288px);
+  justify-content: center; align-items: center; gap: 0 clamp(16px, 2.6vw, 36px);
+}
+.demo-side { margin: 0; display: grid; gap: 16px; justify-items: center; }
+.demo-side figcaption { color: var(--muted); font-size: 14px; font-weight: 600; }
+.demo-phone { width: 100%; }
+/* 가운데: 두 폰을 잇는 선과 상태 (대기 중은 점선, 연결되면 파란 선) */
+.demo-link { position: relative; display: grid; place-items: center; min-height: 40px; margin: 0 0 32px; }
+.demo-link::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px;
+  background: repeating-linear-gradient(90deg, var(--muted) 0 6px, transparent 6px 12px); opacity: 0.45;
+}
+.demo.is-connected .demo-link::before { background: var(--accent); opacity: 1; }
+.demo-state {
+  position: relative; grid-area: 1 / 1; padding: 8px 16px; border-radius: 999px; white-space: nowrap;
+  background: var(--surface); border: 1px solid var(--border); color: var(--muted); font-size: 14px; font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+.demo-state.is-connected { opacity: 0; background: var(--accent-soft); border-color: transparent; color: var(--on-accent-soft); }
+.demo.is-connected .is-waiting { opacity: 0; }
+.demo.is-connected .demo-state.is-connected { opacity: 1; }
+.demo-controls { display: none; justify-content: center; margin-top: 28px; }
+.js .demo-controls { display: flex; }
+.demo-controls .btn { min-height: 44px; }
+
+/* 내 폰: NeulRemote 앱 (어두운 화면). 장치 목록 → [연결] → 원격 화면(가상 Android + 아래 조작 막대) */
+.vd-app {
+  position: relative; aspect-ratio: 720 / 1480; overflow: hidden; background: var(--screen); color: var(--screen-ink);
+  font-size: 4.4cqi; line-height: 1.35; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.vd-app p { margin: 0; }
+.vd-status, .vp-status { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.vd-status { height: 9.5cqi; padding: 0 7cqi; font-size: 3.5cqi; }
+.vp-status-ic { display: flex; align-items: center; gap: 0.25em; }
+.vp-status-ic svg { width: 1.15em; height: 1.15em; }
+.vd-list, .vd-remote { position: absolute; inset: 0; transition: opacity 0.4s var(--ease), transform 0.45s var(--ease), visibility 0s linear 0.45s; }
+.vd-list { padding: 0 6cqi; }
+.vd-remote { display: flex; flex-direction: column; }
+/* 숨긴 상태는 스크립트가 있을 때만 (.js). 스크립트가 없으면 연결 전 모습만 남긴다 */
+.js .vd-remote { opacity: 0; visibility: hidden; transform: scale(1.05); }
+html:not(.js) .vd-remote, html:not(.js) .vp-page:not(.vp-home), html:not(.js) .vd-touch { display: none; }
+.demo.is-connected .vd-list { opacity: 0; visibility: hidden; transform: scale(0.95); }
+.demo.is-connected .vd-remote { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.demo:not(.is-connected) .vd-list { transition-delay: 0s; }
+.vd-brand { padding-top: 3cqi; font-size: 4.4cqi; font-weight: 700; }
+.vd-app .vd-h { margin: 8cqi 0 4.5cqi; font-size: 7cqi; font-weight: 700; }
+.vd-rows { border-radius: 5.5cqi; background: var(--vd-card); }
+.vd-row { display: flex; align-items: center; gap: 3.4cqi; padding: 4.4cqi 4cqi; }
+.vd-row + .vd-row { border-top: 1px solid var(--vd-line); }
+.vd-row-ic { flex: none; width: 7.5cqi; height: 7.5cqi; color: var(--screen-accent); }
+.vd-row-ic svg, .vd-key svg, .vp-app-ic svg, .vp-item-ic svg, .vp-back svg, .vp-search svg { display: block; width: 100%; height: 100%; }
+.vd-row-t { flex: 1; min-width: 0; display: grid; gap: 0.4cqi; }
+.vd-row-t b { font-size: 4.5cqi; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vd-row-t span { font-size: 3.3cqi; color: var(--screen-ok); }
+.vd-connect {
+  flex: none; padding: 2.6cqi 5cqi; border: 0; border-radius: 999px; background: var(--screen-accent); color: var(--screen-on-accent);
+  font: inherit; font-size: 4cqi; font-weight: 700; cursor: pointer; transition: transform 0.15s var(--ease);
+}
+.vd-connect:active, .vd-connect.is-pressed { transform: scale(0.94); }
+.vd-row.is-off { opacity: 0.45; }
+.vd-row.is-off .vd-row-ic { color: var(--screen-muted); }
+.vd-row.is-off .vd-row-t span { color: var(--screen-muted); }
+/* 원격 화면: 검은 바탕 가운데 가상 Android, 아래 조작 막대 (뒤로·홈·연결 해제는 실제로 동작) */
+.vd-view { display: grid; justify-items: center; background: var(--mask); }
+.vd-view .vp { width: 87.5%; }
+.vd-bar { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1cqi; padding: 0 4cqi; background: var(--vd-bar); }
+.vd-bar-label { font-size: 2.9cqi; color: var(--screen-muted); }
+.vd-keys { display: flex; align-items: center; gap: 2.4cqi; }
+.vd-key {
+  width: 15cqi; height: 11.6cqi; padding: 3cqi 4.7cqi; border: 0; border-radius: 3.8cqi; background: var(--vd-key); color: var(--screen-ink);
+  cursor: pointer; transition: transform 0.15s var(--ease);
+}
+.vd-key:active, .vd-key.is-pressed { transform: scale(0.92); }
+.vd-key.is-back svg { transform: rotate(-90deg); }
+.vd-key.vd-end { margin-left: auto; background: var(--vd-end); color: var(--vd-on-end); }
+/* 자동 재생 손가락 (Phosphor hand-pointing 원본): 끝(256 격자의 112, 20)이 --x·--y에 닿는다. 방문자가 만지면 사라진다 */
+.vd-finger {
+  position: absolute; z-index: 9; left: 0; top: 0; width: 15cqi; aspect-ratio: 1; pointer-events: none; opacity: 0;
+  translate: var(--x, 0) var(--y, 0); color: var(--finger);
+  filter: drop-shadow(0 0 1px var(--finger-edge)) drop-shadow(0 2px 4px var(--finger-edge));
+  transition: translate var(--move, 0.6s) var(--ease), opacity 0.3s ease;
+}
+.vd-finger svg { display: block; width: 100%; height: 100%; fill: currentColor; transform: translate(-43.75%, -7.8%); transition: transform 0.14s var(--ease); }
+.vd-finger.is-on { opacity: 1; }
+.vd-finger.is-down svg { transform: translate(-43.75%, -7.8%) scale(0.9); }
+.vd-finger.is-drag { transition: opacity 0.3s ease; }
+
+/* 조작받는 폰: 같은 가상 Android, 누른 자리에 동그라미 ("상대 폰에 터치 표시") */
+.vd-host { position: relative; }
+.vd-touch {
+  position: absolute; z-index: 8; left: calc(var(--tx, 50) * 1%); top: calc(var(--ty, 50) * 1%); width: 11cqi; aspect-ratio: 1;
+  margin: -5.5cqi 0 0 -5.5cqi; border-radius: 50%; background: var(--vd-touch); box-shadow: inset 0 0 0 0.5cqi var(--vd-touch-edge);
+  pointer-events: none; transition: opacity 0.18s ease, transform 0.18s var(--ease);
+}
+.js .vd-touch { opacity: 0; transform: scale(0.6); }
+.js .vd-touch.is-on { opacity: 1; transform: none; }
+
+/* 가상 Android (두 폰에 같은 마크업). --fs = 글자 크기 배율(1~1.5), data-theme = light|dark, data-app = home|settings|display|other */
+.vp {
+  --p-bg: var(--vp-bg); --p-surface: var(--vp-surface); --p-ink: var(--vp-ink); --p-muted: var(--vp-muted); --p-line: var(--vp-line);
+  --p-press: var(--vp-press); --p-accent: var(--vp-accent); --p-knob: var(--vp-knob); --fs: 1;
+  position: relative; aspect-ratio: 9 / 19; overflow: hidden; container-type: inline-size; isolation: isolate;
+  background: var(--p-bg); color: var(--p-ink); font-family: var(--vp-font); line-height: 1.35; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+:lang(ja) .vp { font-family: var(--vp-font-ja); word-break: normal; }
+.vp[data-theme="dark"] {
+  --p-bg: var(--vpd-bg); --p-surface: var(--vpd-surface); --p-ink: var(--vpd-ink); --p-muted: var(--vpd-muted); --p-line: var(--vpd-line);
+  --p-press: var(--vpd-press); --p-accent: var(--vpd-accent); --p-knob: var(--vpd-knob);
+}
+.vp p { margin: 0; }
+.vp-status { position: absolute; z-index: 6; inset: 0 0 auto; height: 8.6cqi; padding: 0 6.5cqi; font-size: calc(3.5cqi * var(--fs)); color: var(--p-ink); transition: color 0.3s ease; pointer-events: none; }
+.vp[data-app="home"] .vp-status, .vp[data-app="home"] .vp-pill { color: var(--vp-on-wall); }
+.vp-pill { position: absolute; z-index: 6; left: 35%; bottom: 2.2cqi; width: 30%; height: 1.2cqi; border-radius: 999px; background: currentColor; color: var(--p-ink); opacity: 0.6; pointer-events: none; }
+.vp-page {
+  position: absolute; inset: 0; padding: 8.6cqi 5cqi 0; background: var(--p-bg); transform-origin: var(--ox, 50%) var(--oy, 62%);
+  transition: opacity 0.26s ease, transform 0.36s var(--ease), visibility 0s linear 0.36s, background-color 0.35s ease;
+}
+.js .vp-page { opacity: 0; visibility: hidden; transform: scale(0.86); }
+.vp[data-app="settings"] .vp-settings, .vp[data-app="display"] .vp-settings, .vp[data-app="display"] .vp-display, .vp[data-app="other"] .vp-other {
+  opacity: 1; visibility: inherit; transform: none; transition-delay: 0s;
+}
+/* 전환이 끝난 뒤(site.js가 data-settled를 붙인다) 가려진 화면은 그리지도 배치하지도 않는다 */
+.vp[data-settled]:not([data-app="home"]) .vp-home, .vp[data-settled]:not([data-app="settings"]) .vp-settings,
+.vp[data-settled]:not([data-app="display"]) .vp-display, .vp[data-settled]:not([data-app="other"]) .vp-other { content-visibility: hidden; }
+/* 홈: 늘 맨 아래에 깔려 있다 (visibility는 물려받는다: 가려진 원격 화면 안에서 visible이면 누르기를 가로챈다). 어두운 남색 바탕에 옅은 빛 */
+.vp-home, .js .vp-home {
+  display: flex; flex-direction: column; padding-bottom: 8cqi; opacity: 1; visibility: inherit; transform: none; color: var(--vp-on-wall);
+  background: radial-gradient(120% 46% at 18% 16%, var(--vp-wall-2) 0, transparent 62%), radial-gradient(90% 34% at 96% 34%, var(--vp-wall-3) 0, transparent 66%), var(--vp-wall-1);
+}
+.vp .vp-date { margin: 7cqi 2cqi 0; font-size: calc(5.2cqi * var(--fs)); font-weight: 500; min-height: 1.35em; }
+.vp-grid, .vp-dock { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1cqi; }
+.vp-grid { margin-top: auto; }
+.vp-dock { margin-top: 5cqi; padding: 2.6cqi 1cqi; border-radius: 8cqi; background: var(--vp-dock); }
+.vp-app {
+  display: grid; justify-items: center; gap: 1.4cqi; min-width: 0; padding: 1.4cqi 0; border: 0; border-radius: 4cqi; background: none; color: inherit;
+  font: inherit; cursor: pointer; transition: transform 0.16s var(--ease);
+}
+.vp-app:active, .vp-app.is-pressed { transform: scale(0.88); }
+.vp-app-ic { display: block; width: 14.6cqi; aspect-ratio: 1; padding: 3.2cqi; border-radius: 50%; background: var(--c); color: var(--vp-on-icon); }
+.vp-app-n { max-width: 100%; font-size: calc(3.1cqi * var(--fs)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vp-dock .vp-app-n { display: none; }
+/* 설정 목록 (세로로 넘겨 본다) */
+.vp-settings { padding-left: 0; padding-right: 0; }
+.vp-scroll { position: relative; height: 100%; padding: 0 5cqi 14cqi; overflow-y: auto; scrollbar-width: none; overscroll-behavior: contain; cursor: grab; }
+.vp-scroll::-webkit-scrollbar { display: none; }
+.vp .vp-title { margin: 9cqi 1cqi 5cqi; font-size: calc(8.4cqi * var(--fs)); font-weight: 500; line-height: 1.2; overflow-wrap: break-word; }
+.vp .vp-search {
+  display: flex; align-items: center; gap: 3cqi; margin-bottom: 3cqi; padding: 3.6cqi 5cqi; border-radius: 999px; background: var(--p-surface);
+  color: var(--p-muted); font-size: calc(4.1cqi * var(--fs)); transition: background-color 0.35s ease;
+}
+.vp-search svg { flex: none; width: 4.6cqi; height: 4.6cqi; }
+.vp-item {
+  display: flex; align-items: center; gap: 5cqi; width: 100%; padding: 3.7cqi 2cqi; border: 0; border-radius: 4.5cqi; background: none; color: inherit;
+  font: inherit; text-align: left; transition: background-color 0.2s ease;
+}
+button.vp-item { cursor: pointer; }
+.vp-item:active, .vp-item.is-pressed { background: var(--p-press); }
+.vp-item-ic { flex: none; width: 5.8cqi; height: 5.8cqi; color: var(--p-muted); }
+.vp-item-t { flex: 1; min-width: 0; display: grid; gap: 0.3cqi; }
+.vp-item-t b, .vp-card b { font-size: calc(4.5cqi * var(--fs)); font-weight: 500; }
+.vp-item-t small, .vp-card small { font-size: calc(3.3cqi * var(--fs)); color: var(--p-muted); }
+/* 디스플레이: 글자 크기 막대(끄는 대로 두 폰 글자가 커진다)와 어두운 테마 */
+.vp-display { z-index: 2; overflow-y: auto; scrollbar-width: none; }
+.js .vp-display { transform: translateX(22%); }
+.vp-display::-webkit-scrollbar { display: none; }
+.vp-back { display: block; width: 11cqi; height: 11cqi; margin: 2cqi 0 0 -2.4cqi; padding: 2.7cqi; border: 0; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+.vp-back:active, .vp-back.is-pressed { background: var(--p-press); }
+.vp-display .vp-title { margin-top: 2cqi; }
+.vp-card, .vp-switch { border-radius: 6cqi; background: var(--p-surface); transition: background-color 0.35s ease; }
+.vp-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.3cqi; padding: 4.6cqi 5cqi 3cqi; }
+.vp-slider { display: flex; align-items: center; gap: 2.4cqi; min-width: 0; margin-top: 1cqi; }
+.vp-a { flex: none; font-weight: 600; color: var(--p-muted); }
+.vp-a.is-s { font-size: 3.6cqi; }
+.vp-a.is-l { font-size: 6.4cqi; }
+/* 막대: em = 가상 화면 너비의 1% (가짜 요소에서도 같은 단위를 쓰려고 글자 크기에 실어 둔다) */
+.vp-range { flex: 1; min-width: 0; width: 0; height: 13em; margin: 0; padding: 0; font-size: 1cqi; background: none; cursor: pointer; touch-action: pan-y; -webkit-appearance: none; appearance: none; }
+.vp-range::-webkit-slider-runnable-track { height: 1.4em; border-radius: 999px; background: var(--p-line); }
+.vp-range::-moz-range-track { height: 1.4em; border-radius: 999px; background: var(--p-line); }
+.vp-range::-webkit-slider-thumb { -webkit-appearance: none; width: 6em; height: 6em; margin-top: -2.3em; border: 0; border-radius: 50%; background: var(--p-accent); }
+.vp-range::-moz-range-thumb { width: 6em; height: 6em; border: 0; border-radius: 50%; background: var(--p-accent); }
+.vp-switch { margin-top: 3cqi; padding: 4.4cqi 5cqi; }
+.vp-switch:active, .vp-switch.is-pressed { background: var(--p-surface); }
+.vp-toggle { position: relative; flex: none; width: 12cqi; height: 7cqi; border-radius: 999px; background: var(--p-line); transition: background-color 0.25s ease; }
+.vp-toggle::after {
+  content: ""; position: absolute; left: 1cqi; top: 1cqi; width: 5cqi; height: 5cqi; border-radius: 50%; background: var(--p-knob);
+  transition: transform 0.28s var(--ease);
+}
+.vp-switch[aria-checked="true"] .vp-toggle { background: var(--p-accent); }
+.vp-switch[aria-checked="true"] .vp-toggle::after { transform: translateX(5cqi); }
+.vp .vp-sample { margin: 6cqi 1cqi 12cqi; font-size: calc(4.6cqi * var(--fs)); line-height: 1.5; }
+/* 다른 앱: 아이콘과 이름만 */
+.vp-other { display: grid; place-content: center; justify-items: center; gap: 4cqi; }
+.vp-other .vp-app-ic { width: 26cqi; padding: 6cqi; }
+.vp-other-n { font-size: calc(5cqi * var(--fs)); font-weight: 500; }
+.vd-app :focus-visible { outline: max(2px, 0.9cqi) solid var(--tap); outline-offset: 0.6cqi; }
+.vp :focus-visible { outline-width: max(2px, 1cqi); outline-offset: -1cqi; }
+@media (max-width: 680px) {
+  .demo { margin-top: 36px; }
+  /* 좁은 화면: 직접 만지는 내 폰을 크게, 조작받는 폰은 작게 */
+  .demo-stage { grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr); align-items: end; gap: 12px 16px; }
+  .demo-link { grid-column: 1 / -1; grid-row: 1; margin: 0; }
+  .demo-link::before { display: none; }
+  .demo-side { gap: 8px; }
+  .demo-side figcaption { font-size: 13px; }
+  .demo-controls { margin-top: 20px; }
+}
+
+/* ---------- 요금 (D-145·D-200): 무료와 Pro를 나란히, 다른 것은 인터넷으로 연결할 폰 수 ---------- */
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; max-width: 880px; margin: 52px auto 0; align-items: stretch; }
+.plan {
+  position: relative; display: flex; flex-direction: column; padding: 36px 32px 32px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); box-shadow: var(--shadow);
+}
+.plan.is-pro { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+.plan-badge {
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); white-space: nowrap;
+  padding: 4px 16px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 13px; font-weight: 700;
+}
+.plan h3 { font-size: 22px; }
+.plan-for { margin-top: 4px; color: var(--muted); font-size: 15px; }
+.plan-price { display: flex; align-items: baseline; gap: 8px; margin-top: 28px; }
+.plan-amount { font-size: clamp(36px, 4vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.plan-per { color: var(--muted); font-size: 16px; }
+.plan-alt { margin-top: 8px; min-height: 1.5em; color: var(--muted); font-size: 14px; }
+/* 한도 세 칸: 상자 안 상자 대신 가는 선 위아래 */
+.plan-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 24px 0 0; padding: 16px 0; border-block: 1px solid var(--border); }
+.plan-facts div { text-align: center; padding: 0 4px; }
+.plan-facts div + div { border-left: 1px solid var(--border); }
+.plan-facts dt { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.plan-facts dd { margin: 4px 0 0; font-size: 17px; font-weight: 700; }
+.plan.is-pro .plan-facts dd:first-of-type { color: var(--accent); }
+.plan-list { list-style: none; padding: 0; margin: 24px 0 32px; display: grid; gap: 12px; flex: 1; align-content: start; }
+.plan-list li { display: flex; gap: 8px; align-items: flex-start; font-size: 15px; line-height: 1.55; }
+.plan-list .ic { margin-top: 2px; color: var(--accent); }
+.plan-cta { width: 100%; }
+.plans-note { margin: 28px auto 0; max-width: 46em; text-align: center; color: var(--muted); font-size: 14px; }
+@media (max-width: 760px) {
+  .plans { grid-template-columns: minmax(0, 1fr); max-width: 480px; gap: 32px; margin-top: 40px; }
+  .plan { padding: 32px 24px 24px; }
+}
+
+/* ---------- 여섯 가지 길: 밝은 바탕에 가는 선으로 나눈 여섯 줄 (아이콘 없음) ---------- */
+/* 여섯 가지 길: 왼쪽 그림(PC 브라우저 뒤, 아이폰·Android 폰 앞) + 오른쪽 목록 (사용자 의견 "글만 있어 허전하다") */
+.ways-wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; margin-top: 52px; }
+.ways-art { position: relative; margin: 0; aspect-ratio: 10 / 9; }
+.ways-pc {
+  position: absolute; left: 0; top: 4%; width: 86%; height: auto; border-radius: 14px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-zoom); background: var(--surface);
+}
+.ways-art .device { position: absolute; bottom: 0; }
+.ways-art .ways-iphone { left: 8%; width: 27%; }
+.ways-art .ways-android { right: 2%; width: 31%; bottom: -3%; }
+.ways { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.way { padding: 18px 0 22px; border-top: 1px solid var(--border); }
+.way h3 { font-size: 18px; }
+.way p { margin-top: 6px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+@media (max-width: 1000px) {
+  .ways-wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .ways-art { width: min(100%, 560px); margin: 0 auto; }
+}
+@media (max-width: 600px) { .ways { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- 실제 화면 구역: 글과 S9 화면 사진이 번갈아 ---------- */
 /* 사진 뒤 빛이 화면 옆으로 넘치지 않게 (가로 스크롤 막기) */
@@ -291,23 +627,30 @@ button { font: inherit; }
 .scene + .scene { margin-top: 128px; }
 .scene.is-flip .scene-text { order: 2; }
 .scene-lead { margin-top: 18px; color: var(--muted); font-size: 18px; line-height: 1.65; }
-.points { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 22px; }
-.points li { display: flex; gap: 16px; align-items: flex-start; }
-.point-icon, .safe-icon {
-  flex: none; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
-  background: var(--accent-soft); color: var(--accent);
-}
+.points { list-style: none; padding: 0; margin: 28px 0 0; }
+.points li { padding: 16px 0; border-top: 1px solid var(--border); }
 .points h3, .safe h3 { font-size: 17px; }
 .points p, .safe p { margin-top: 4px; color: var(--muted); font-size: 16px; line-height: 1.6; }
-/* 사진은 그린 기기 몸체에 끼우고 뒤에 옅은 빛 — 사진으로 읽히게 */
-.scene-shot { position: relative; margin: 0; padding: 10px; border-radius: 28px; background: var(--device); box-shadow: var(--shadow-high); }
-.scene-shot::before {
-  content: ""; position: absolute; inset: -14% -10%; z-index: -1; pointer-events: none;
-  background: radial-gradient(closest-side at 35% 40%, var(--glow-1), transparent), radial-gradient(closest-side at 70% 70%, var(--glow-2), transparent);
+/* 사진은 확대한 폰 안에: 옆 테두리·옆면 버튼이 보이고, 폰은 위아래로 이어지듯 흐려진다 (사진은 화면 가운데를 잘라 낸 것) */
+.scene-shot { position: relative; margin: 0; }
+.zoom {
+  container-type: inline-size; padding: 0 4%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, var(--mask) 8%, var(--mask) 92%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, var(--mask) 8%, var(--mask) 92%, transparent);
 }
-.scene-shot img { width: 100%; height: auto; border-radius: 19px; }
+.zoom-body {
+  position: relative; padding: 0 2.6cqi; background: var(--device);
+  box-shadow: inset max(1px, 0.45cqi) 0 0 var(--device-edge), inset calc(-1 * max(1px, 0.45cqi)) 0 0 var(--device-edge), var(--shadow-zoom);
+}
+.zoom-body img { width: 100%; height: auto; display: block; }
+.zoom-body::before, .zoom-body::after { content: ""; position: absolute; width: 1.4cqi; background: var(--device-key); }
+.zoom-body::before { left: -1.3cqi; top: 34%; height: 24%; border-radius: 0.9cqi 0 0 0.9cqi; }
+.zoom-body::after {
+  right: -1.3cqi; top: 8%; height: 66%; border-radius: 0 0.9cqi 0.9cqi 0;
+  background: linear-gradient(var(--device-key) 0 44%, transparent 44% 54%, var(--device-key) 54% 100%);
+}
 @media (max-width: 900px) {
-  .scene { grid-template-columns: 1fr; }
+  .scene { grid-template-columns: minmax(0, 1fr); }
   .scene.is-flip .scene-text { order: 0; }
   .scene + .scene { margin-top: 96px; }
 }
@@ -319,14 +662,14 @@ button { font: inherit; }
 .step h3 { margin-top: 20px; font-size: 19px; line-height: 1.4; }
 .step p { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 1.65; }
 .steps-more { text-align: center; margin-top: 36px; }
-@media (max-width: 900px) { .steps { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; } }
+@media (max-width: 900px) { .steps { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; } }
 
 /* ---------- 허락은 늘 내가: 항목 넷(가는 선) + PC·폰 모양의 여섯 자리 확인(정말 동작) ---------- */
 .safety-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(40px, 6vw, 80px); align-items: center; }
 .safety { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
-.safe { display: flex; gap: 14px; padding: 24px 0; border-top: 1px solid var(--border); }
-@media (max-width: 960px) { .safety-grid { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .safety { grid-template-columns: 1fr; } }
+.safe { padding: 24px 0; border-top: 1px solid var(--border); }
+@media (max-width: 960px) { .safety-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .safety { grid-template-columns: minmax(0, 1fr); } }
 
 .pairing { padding: 44px 28px 30px; border-radius: 28px; background: linear-gradient(150deg, var(--glow-1), var(--glow-2) 55%, transparent), var(--bg-soft); }
 .pair-devices { display: flex; align-items: flex-end; justify-content: center; gap: 22px; }
@@ -337,21 +680,21 @@ button { font: inherit; }
 .pair-stand { width: 54px; height: 26px; background: var(--device); clip-path: polygon(30% 0, 70% 0, 78% 100%, 22% 100%); }
 .pair-pc::after { content: ""; width: 116px; height: 8px; border-radius: 4px; background: var(--device); }
 .pair-phone { flex: none; width: 188px; }
-.pair-phone .pair-screen { min-height: 360px; justify-content: center; padding: 24px 14px; border: 8px solid var(--device); border-radius: 30px; }
+.pair-phone .pair-screen { min-height: 360px; justify-content: center; padding: 32px 16px 24px; }
 .pair-label { font-size: 13px; font-weight: 600; color: var(--screen-muted); }
 .pair-digits { margin-top: 6px; font-size: 30px; font-weight: 700; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; transition: opacity 0.25s ease, color 0.3s ease; }
 .pair-phone .pair-digits { font-size: 26px; }
 .pair-digits.is-new { opacity: 0.2; }
 .pair-ask { margin-top: 18px; font-size: 13px; line-height: 1.5; color: var(--screen-muted); }
 .pair-btn {
-  margin-top: 14px; min-height: 38px; padding: 0 16px; border: 0; border-radius: 999px; cursor: pointer;
+  margin-top: 14px; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; cursor: pointer;
   background: var(--screen-accent); color: var(--screen-on-accent); font: 600 14px/1 var(--font);
   transition: transform 0.2s var(--ease);
 }
 :lang(ja) .pair-btn { font-family: var(--font-ja); }
 .pair-btn:active { transform: scale(0.96); }
-.pair-done { margin-top: 14px; font-size: 13px; line-height: 1.5; font-weight: 600; color: #3fcf82; }
-.pairing.is-paired .pair-digits { color: #3fcf82; }
+.pair-done { margin-top: 14px; font-size: 13px; line-height: 1.5; font-weight: 600; color: var(--screen-ok); }
+.pairing.is-paired .pair-digits { color: var(--screen-ok); }
 .pair-foot { margin-top: 26px; text-align: center; }
 .pair-caption { margin: 10px auto 0; color: var(--muted); font-size: 14px; max-width: 40ch; }
 @media (max-width: 480px) {
@@ -360,7 +703,7 @@ button { font: inherit; }
   .pair-pc .pair-screen { padding: 10px; border-width: 7px; }
   .pair-digits { font-size: 22px; }
   .pair-phone { width: 148px; }
-  .pair-phone .pair-screen { min-height: 300px; padding: 18px 10px; border-width: 7px; border-radius: 26px; }
+  .pair-phone .pair-screen { min-height: 300px; padding: 24px 12px 20px; }
   .pair-phone .pair-digits { font-size: 21px; }
 }
 
@@ -368,7 +711,7 @@ button { font: inherit; }
 .platforms { list-style: none; padding: 0; margin: 52px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 1100px) { .platforms { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .platforms { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .platforms { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .platforms { grid-template-columns: minmax(0, 1fr); } }
 .platform {
   position: relative; display: flex; flex-direction: column; gap: 10px;
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); padding: 28px 20px 22px; box-shadow: var(--shadow);
@@ -405,30 +748,35 @@ button { font: inherit; }
 .qa[open] p { animation: fade-down 0.35s var(--ease); }
 @keyframes fade-down { from { opacity: 0; transform: translateY(-6px); } }
 
-/* ---------- 마무리: 그라데이션 카드 (제목 왼쪽, 글·버튼 오른쪽) ---------- */
-.cta-wrap { padding: 8px 0 112px; }
-.cta-card {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 28px 56px; align-items: center;
-  padding: clamp(36px, 5vw, 64px); border-radius: 28px; background: var(--cta-bg);
+/* ---------- 마무리: 글·버튼과, 아래에서 올라온 조작받는 폰 (원격 대기 화면) — 상자 없이 ---------- */
+.cta-wrap { padding: 104px 0 0; overflow-x: clip; }
+.cta-row { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 40px 64px; }
+.cta-text { padding-bottom: 104px; }
+.cta-text h2 { font-size: clamp(30px, 3.6vw, 44px); letter-spacing: -0.03em; line-height: 1.22; max-width: 14em; }
+.cta-text p { margin-top: 16px; color: var(--muted); font-size: 18px; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+/* 폰은 구역 아래 끝에서 잘린다 (위·옆 그림자는 살림) */
+.cta-phone { align-self: end; justify-self: center; width: min(100%, 256px); height: 360px; clip-path: inset(-80px -80px 0 -80px); }
+@media (max-width: 860px) {
+  .cta-wrap { padding-top: 80px; }
+  .cta-row { grid-template-columns: minmax(0, 1fr); }
+  .cta-text { padding-bottom: 0; }
+  .cta-phone { width: 210px; height: 260px; }
 }
-.cta-card h2 { font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.03em; line-height: 1.25; }
-.cta-side p { color: var(--muted); font-size: 18px; }
-.cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-@media (max-width: 860px) { .cta-card { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .cta-actions .btn { flex: 1 1 auto; } }
 
-/* ---------- 바닥: 짙은 남색, 이름·설명과 링크 두 단 ---------- */
-.foot { background: var(--foot-bg); color: var(--foot-ink); padding: 64px 0 40px; }
+/* ---------- 바닥: 밝은 바탕에 가는 선, 이름·설명과 링크 두 단 ---------- */
+.foot { background: var(--bg-soft); color: var(--ink); border-top: 1px solid var(--border); padding: 56px 0 36px; }
 .foot-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
-.foot .brand { color: var(--foot-ink); margin-right: 0; }
-.foot-brand p { margin-top: 14px; color: var(--foot-muted); font-size: 15px; max-width: 28em; }
+.foot .brand { color: var(--ink); margin-right: 0; }
+.foot-brand p { margin-top: 14px; color: var(--muted); font-size: 15px; max-width: 28em; }
 .foot-col { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.foot-col h2 { margin-bottom: 4px; font-size: 15px; letter-spacing: 0; color: var(--foot-ink); }
-.foot-col a { color: var(--foot-muted); font-size: 15px; }
-.foot-col a:hover { color: var(--foot-ink); }
-.foot-note { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: grid; gap: 6px; color: var(--foot-muted); font-size: 13px; }
+.foot-col h2 { margin-bottom: 4px; font-size: 15px; letter-spacing: 0; color: var(--ink); }
+.foot-col a { color: var(--muted); font-size: 15px; }
+.foot-col a:hover { color: var(--ink); }
+.foot-note { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: grid; gap: 6px; color: var(--muted); font-size: 13px; }
 .foot-note p { max-width: 72ch; }
-@media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-brand { grid-column: 1 / -1; } }
+@media (max-width: 720px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .foot-brand { grid-column: 1 / -1; } }
 
 /* ---------- 개인정보 처리방침 ---------- */
 .doc { padding-top: 56px; padding-bottom: 120px; }
@@ -446,7 +794,7 @@ button { font: inherit; }
 .g-lead { margin-top: 14px; color: var(--muted); font-size: 18px; max-width: 42em; }
 .g-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 40px; }
 @media (max-width: 900px) { .g-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .g-cards { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .g-cards { grid-template-columns: minmax(0, 1fr); } }
 .card-icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; flex: none; background: var(--accent-soft); color: var(--accent); }
 /* 사용 안내 카드·칩의 플랫폼 상표 (시작하기 카드와 같은 모양, 놓이는 곳에 맞춰 작게) */
 .card-icon .mark { width: 28px; height: 28px; }
@@ -469,7 +817,7 @@ button { font: inherit; }
 .g-section { margin-top: 48px; }
 .g-section h2 { font-size: 22px; margin-bottom: 16px; }
 .g-steps { list-style: none; counter-reset: g; padding: 0; margin: 0; display: grid; gap: 12px; }
-.g-step { counter-increment: g; position: relative; display: grid; grid-template-columns: 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); padding: 22px 24px 22px 68px; }
+.g-step { counter-increment: g; position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); padding: 22px 24px 22px 68px; }
 .g-step::before {
   content: counter(g); position: absolute; left: 22px; top: 20px; width: 30px; height: 30px; border-radius: 50%;
   display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 14px;
@@ -481,6 +829,8 @@ button { font: inherit; }
 .g-shot { margin: 0; }
 .g-shot img { border-radius: 18px; box-shadow: var(--shadow); background: var(--surface-2); }
 .g-phone img { width: 100%; max-width: 270px; }
+.g-phone .device { width: 100%; max-width: 260px; }
+.g-shot .device-screen > img { max-width: none; border-radius: 0; box-shadow: none; }
 .g-wide img { width: 100%; }
 @media (min-width: 760px) { .g-step:has(.g-phone) { grid-template-columns: 1fr 240px; align-items: start; } }
 @media (max-width: 480px) { .g-step { padding: 18px 16px 18px 58px; } .g-step::before { left: 16px; } }
@@ -508,6 +858,8 @@ button { font: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   .btn:hover, .g-card:hover { transform: none; }
+  /* 가상 시연: 화면 전환·누름·손가락 움직임 없이 바로 바뀐다 (자동 재생도 꺼진 채 시작, site.js) */
+  .vd-list, .vd-remote, .vd-finger, .vd-finger svg, .vd-touch, .vd-connect, .vd-key, .vp-page, .vp-app, .vp-item, .vp-toggle, .vp-toggle::after, .vp-status, .demo-state { transition: none; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
 @keyframes phone-in { from { opacity: 0; transform: translateY(60px) rotate(var(--r)) scale(0.96); } to { opacity: 1; transform: rotate(var(--r)); } }
