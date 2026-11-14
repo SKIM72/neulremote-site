@@ -75,8 +75,6 @@
   --vd-touch-edge: rgba(255, 255, 255, 0.85);
   /* 시연 손가락: 어느 화면 위에서도 보이게 흰 손 + 어두운 테두리 그림자 */
   --finger: #ffffff;
-  --finger-line: #1e293b;
-  --finger-knuckle: #94a3b8;
   --finger-edge: rgba(15, 23, 42, 0.55);
   --mask: #000;
   --accent-glow: rgba(34, 93, 199, 0.55);
@@ -448,20 +446,16 @@ html:not(.js) .vd-remote, html:not(.js) .vp-page:not(.vp-home), html:not(.js) .v
 .vd-key:active, .vd-key.is-pressed { transform: scale(0.92); }
 .vd-key.is-back svg { transform: rotate(-90deg); }
 .vd-key.vd-end { margin-left: auto; background: var(--vd-end); color: var(--vd-on-end); }
-/* 자동 재생 손가락 (MingCute hand-finger 원본): 손끝 바로 아래(24 격자의 9.5, 2.4 — 폭의 39.5%, 높이의 9.9%)가 --x·--y에 닿는다. 방문자가 만지면 사라진다 */
+/* 자동 재생 손가락 (Phosphor hand-pointing 원본): 끝(256 격자의 112, 20)이 --x·--y에 닿는다. 방문자가 만지면 사라진다 */
 .vd-finger {
   position: absolute; z-index: 9; left: 0; top: 0; width: 15cqi; aspect-ratio: 1; pointer-events: none; opacity: 0;
   translate: var(--x, 0) var(--y, 0); color: var(--finger);
-  filter: drop-shadow(0 2px 4px var(--finger-edge));
+  filter: drop-shadow(0 0 1px var(--finger-edge)) drop-shadow(0 2px 4px var(--finger-edge));
   transition: translate var(--move, 0.6s) var(--ease), opacity 0.3s ease;
 }
-.vd-finger svg { display: block; width: 100%; height: 100%; overflow: visible; fill: currentColor; transform: translate(-39.5%, -9.9%); transition: transform 0.14s var(--ease); }
-/* 흰 손 + 진한 윤곽선 (손 모양 커서처럼): 밝은 단추 위에서도 손 모양이 녹지 않게. 선은 바깥쪽으로만 보인다(paint-order) */
-.vd-finger path { stroke: var(--finger-line); stroke-width: 1.5; stroke-linejoin: round; paint-order: stroke fill; }
-/* 접은 손가락 마디: 연한 짧은 선, 윤곽에 닿지 않는다 */
-.vd-finger .vd-knuckle { fill: none; stroke: var(--finger-knuckle); stroke-width: 0.9; stroke-linecap: round; }
+.vd-finger svg { display: block; width: 100%; height: 100%; fill: currentColor; transform: translate(-43.75%, -7.8%); transition: transform 0.14s var(--ease); }
 .vd-finger.is-on { opacity: 1; }
-.vd-finger.is-down svg { transform: translate(-39.5%, -9.9%) scale(0.9); }
+.vd-finger.is-down svg { transform: translate(-43.75%, -7.8%) scale(0.9); }
 .vd-finger.is-drag { transition: opacity 0.3s ease; }
 
 /* 조작받는 폰: 같은 가상 Android, 누른 자리에 동그라미 ("상대 폰에 터치 표시") */
