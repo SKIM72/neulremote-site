@@ -789,6 +789,12 @@ button.vp-item { cursor: pointer; }
 .foot-col a:hover { color: var(--ink); }
 .foot-note { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: grid; gap: 6px; color: var(--muted); font-size: 13px; }
 .foot-note p { max-width: 72ch; }
+/* 사업자 정보 (전자상거래법 표시): 이름표와 값을 한 줄씩 이어 둔다 */
+.biz { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; }
+.biz div { display: flex; gap: 6px; }
+.biz dt { font-weight: 600; }
+.biz dd { margin: 0; }
+.doc .biz { margin-top: 14px; font-size: 15px; color: var(--ink); }
 @media (max-width: 720px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .foot-brand { grid-column: 1 / -1; } }
 
 /* ---------- 개인정보 처리방침 ---------- */
