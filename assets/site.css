@@ -349,6 +349,13 @@ button { font: inherit; }
   .hero-row { grid-template-columns: minmax(0, 1fr); gap: 44px; }
   .hero-art { height: 470px; max-width: 460px; width: 100%; margin: 0 auto; }
   .hero-art .phone { width: 200px; }
+  /* 한 줄 화면 (사용자 2026-11-15 "폰 뒤 파란 빛이 모바일에서 부자연스럽다"): 머리글 쪽 빛은 화면 구석에 동심원 띠로 남아 끄고,
+     폰 묶음 뒤에 둥근 빛 하나만 — 화면 밖으로 넘쳐 잘리지 않게 좁히고 가장자리를 천천히 흐리게 */
+  .hero::before { display: none; }
+  .hero-art::before {
+    inset: -10% -2% -12%;
+    background: radial-gradient(closest-side, var(--hero-glow-1), color-mix(in srgb, var(--hero-glow-1) 55%, transparent) 50%, color-mix(in srgb, var(--hero-glow-1) 18%, transparent) 78%, transparent);
+  }
 }
 @media (max-width: 480px) {
   .hero-art { height: 400px; }
@@ -509,7 +516,9 @@ html:not(.js) .vd-remote, html:not(.js) .vp-page:not(.vp-home), html:not(.js) .v
   font: inherit; cursor: pointer; transition: transform 0.16s var(--ease);
 }
 .vp-app:active, .vp-app.is-pressed { transform: scale(0.88); }
-.vp-app-ic { display: block; width: 14.6cqi; aspect-ratio: 1; padding: 3.2cqi; border-radius: 50%; background: var(--c); color: var(--vp-on-icon); }
+/* 너비·높이를 함께 준다 (사용자 2026-11-15 "사파리 모바일에서 아이콘이 부자연스럽다"): aspect-ratio만 두면 사파리가 격자 칸 높이로
+   늘려 세로 타원이 됐다(WebKit 27×39px) */
+.vp-app-ic { display: block; width: 14.6cqi; height: 14.6cqi; align-self: center; padding: 3.2cqi; border-radius: 50%; background: var(--c); color: var(--vp-on-icon); }
 .vp-app-n { max-width: 100%; font-size: calc(3.1cqi * var(--fs)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vp-dock .vp-app-n { display: none; }
 /* 설정 목록 (세로로 넘겨 본다) */
@@ -563,7 +572,7 @@ button.vp-item { cursor: pointer; }
 .vp .vp-sample { margin: 6cqi 1cqi 12cqi; font-size: calc(4.6cqi * var(--fs)); line-height: 1.5; }
 /* 다른 앱: 아이콘과 이름만 */
 .vp-other { display: grid; place-content: center; justify-items: center; gap: 4cqi; }
-.vp-other .vp-app-ic { width: 26cqi; padding: 6cqi; }
+.vp-other .vp-app-ic { width: 26cqi; height: 26cqi; padding: 6cqi; }
 .vp-other-n { font-size: calc(5cqi * var(--fs)); font-weight: 500; }
 .vd-app :focus-visible { outline: max(2px, 0.9cqi) solid var(--tap); outline-offset: 0.6cqi; }
 .vp :focus-visible { outline-width: max(2px, 1cqi); outline-offset: -1cqi; }
