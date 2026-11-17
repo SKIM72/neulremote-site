@@ -235,6 +235,8 @@ button { font: inherit; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; margin-right: auto; }
 .brand:hover { text-decoration: none; }
 .brand img { border-radius: 8px; }
+/* 글자 로고 (D-170): 앱과 같은 그림, 글자색을 따른다 */
+.brand .wordmark { display: block; height: 16px; width: auto; }
 .nav { display: flex; gap: 26px; }
 .nav a { color: var(--muted); font-weight: 500; font-size: 15px; transition: color 0.2s ease; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); text-decoration: none; }
@@ -423,6 +425,7 @@ html:not(.js) .vd-remote, html:not(.js) .vp-page:not(.vp-home), html:not(.js) .v
 .demo.is-connected .vd-remote { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 .demo:not(.is-connected) .vd-list { transition-delay: 0s; }
 .vd-brand { padding-top: 3cqi; font-size: 4.4cqi; font-weight: 700; }
+.vd-brand .wordmark { display: block; height: 3.3cqi; width: auto; }
 .vd-app .vd-h { margin: 8cqi 0 4.5cqi; font-size: 7cqi; font-weight: 700; }
 .vd-rows { border-radius: 5.5cqi; background: var(--vd-card); }
 .vd-row { display: flex; align-items: center; gap: 3.4cqi; padding: 4.4cqi 4cqi; }
