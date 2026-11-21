@@ -431,6 +431,52 @@
   if (card && card.classList.contains("is-soon")) card = document.querySelector('.platform[data-platform="browser"]');
   if (card) card.classList.add("is-you");
 
+  // 받기 펼침 (사용자 2026-11-21): Windows x64·ARM64, Mac Apple Silicon·Intel — [받기]를 누르면 칩별 단추 둘이 단추 아래로 펼쳐진다.
+  // 다시 누르기·바깥 누르기·Esc·초점이 밖으로 나가면 닫힌다(Esc면 받기 단추로 초점), 하나를 열면 다른 것은 닫힌다
+  var dls = Array.prototype.slice.call(document.querySelectorAll("[data-dl]"));
+  function setOpen(dl, open) {
+    var toggle = dl.querySelector(".dl-toggle");
+    dl.classList.toggle("is-open", open);
+    if (toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    var host = dl.closest(".platform");
+    if (host) host.classList.toggle("is-dl-open", open);
+  }
+  dls.forEach(function (dl) {
+    var toggle = dl.querySelector(".dl-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var open = !dl.classList.contains("is-open");
+      dls.forEach(function (other) { if (other !== dl) setOpen(other, false); });
+      setOpen(dl, open);
+    });
+    dl.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && dl.classList.contains("is-open")) {
+        setOpen(dl, false);
+        toggle.focus();
+      }
+    });
+    dl.addEventListener("focusout", function (e) {
+      if (e.relatedTarget && !dl.contains(e.relatedTarget)) setOpen(dl, false);
+    });
+  });
+  document.addEventListener("click", function (e) {
+    dls.forEach(function (dl) { if (dl.classList.contains("is-open") && !dl.contains(e.target)) setOpen(dl, false); });
+  });
+  // 이 기기의 칩: Chrome·Edge만 알려 준다(Safari·Firefox는 모름 → 둘 다 같은 모양). 맞는 쪽을 채운 단추로
+  if ((platform === "windows" || platform === "mac") && navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+    navigator.userAgentData.getHighEntropyValues(["architecture", "bitness"]).then(function (v) {
+      var arch = v.architecture === "arm" ? "arm64" : v.architecture === "x86" && v.bitness === "64" ? "x64" : null;
+      var dl = document.querySelector('.platform[data-platform="' + platform + '"] [data-dl]');
+      var match = arch && dl && dl.querySelector('.dl-option[data-arch="' + arch + '"]');
+      if (!match) return;
+      match.classList.add("is-match");
+      var note = document.createElement("span");
+      note.className = "visually-hidden";
+      note.textContent = " (" + dl.getAttribute("data-match") + ")";
+      match.appendChild(note);
+    }, function () {});
+  }
+
   // 여섯 자리 확인 (같은 Wi‑Fi에서 처음 연결할 때 두 화면에 같은 숫자): 들어올 때마다 새 숫자, 같다고 누르면 페어링
   var pairing = document.querySelector("[data-pairing]");
   if (pairing) {

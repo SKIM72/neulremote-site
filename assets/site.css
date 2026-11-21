@@ -746,7 +746,7 @@ button.vp-item { cursor: pointer; }
 .mark-wide { width: 84px; height: auto; }
 .platform h3 { font-size: 19px; margin-top: 4px; }
 .platform p { color: var(--muted); font-size: 14px; line-height: 1.6; flex: 1; }
-.platform .btn { margin-top: 8px; width: 100%; padding: 0 12px; }
+.platform .btn { margin-top: 8px; width: 100%; padding: 0 12px; white-space: normal; text-align: center; line-height: 1.2; }
 .platform-guide { display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-size: 14px; font-weight: 600; margin-top: 2px; }
 .platform.is-soon .platform-mark, .platform.is-soon h3 { color: var(--muted); }
 .platform.is-you { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
@@ -756,6 +756,43 @@ button.vp-item { cursor: pointer; }
   background: var(--accent-soft); color: var(--on-accent-soft);
 }
 .platform.is-you .you-badge { display: block; }
+/* 스토어가 생긴 뒤 예전 길 (APK 직접·웹 앱) */
+.platform-alt { display: inline-flex; justify-content: center; font-size: 13px; font-weight: 600; color: var(--muted); }
+/* 한 줄에 칸 하나면 맞출 옆 칸이 없다 — 빈 줄은 뺀다 */
+@media (max-width: 520px) { span.platform-alt[aria-hidden="true"] { display: none; } }
+/* 받기 펼침 (사용자 2026-11-21 "다운로드 누르면 … 촤라락"): Windows x64·ARM64, Mac Apple Silicon·Intel.
+   단추 아래로 판이 겹쳐 열리고(옆 칸은 그대로) 단추가 차례로 내려온다. 스크립트가 없으면 칸 안에 처음부터 펼친 채(받기 단추만 숨김) */
+.dl { position: relative; margin-top: 8px; display: flex; flex-direction: column; }
+.platform .dl .btn { margin-top: 0; }
+.dl-chevron { transition: transform 0.3s var(--ease); }
+.dl.is-open .dl-chevron { transform: rotate(180deg); }
+.dl-options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+html:not(.js) .dl-toggle { display: none; }
+.platform .dl-option {
+  flex-direction: column; gap: 3px; min-height: 58px; padding: 8px 12px;
+  white-space: normal; text-align: center; line-height: 1.2;
+}
+.dl-label { display: inline-flex; align-items: center; gap: 6px; }
+.dl-sub { font-size: 12px; font-weight: 500; opacity: 0.85; }
+.dl-check { display: none; }
+/* 이 기기의 칩에 맞는 쪽 (Chrome·Edge가 알려 줄 때만) */
+.dl-option.is-match { background: var(--accent); color: var(--on-accent); }
+.dl-option.is-match .dl-check { display: inline-block; }
+/* Store판: 직접 받기 둘과 갈라 보이게 테두리만 */
+.dl-option[data-arch="store"] { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.platform.is-dl-open { z-index: 6; }
+.js .dl-options {
+  position: absolute; left: -8px; right: -8px; top: calc(100% + 6px); z-index: 6; margin: 0; padding: 8px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); box-shadow: var(--shadow-high);
+  opacity: 0; visibility: hidden; transform: translateY(-8px) scale(0.98); transform-origin: top center;
+  transition: opacity 0.2s ease, transform 0.35s var(--ease), visibility 0s linear 0.35s;
+}
+.js .dl.is-open .dl-options { opacity: 1; visibility: visible; transform: none; transition: opacity 0.2s ease, transform 0.35s var(--ease), visibility 0s; }
+.js .dl-option {
+  opacity: 0; transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.4s var(--ease), box-shadow 0.25s var(--ease), background-color 0.2s ease;
+}
+.js .dl.is-open .dl-option { opacity: 1; transform: none; transition-delay: calc(var(--i, 0) * 70ms + 60ms), calc(var(--i, 0) * 70ms + 60ms), 0s, 0s; }
 .install-note { display: flex; gap: 10px; align-items: flex-start; justify-content: center; margin: 28px auto 0; max-width: 46em; color: var(--muted); font-size: 14px; }
 .install-note .ic { margin-top: 2px; color: var(--accent); }
 
@@ -891,6 +928,9 @@ button.vp-item { cursor: pointer; }
   .btn:hover, .g-card:hover { transform: none; }
   /* 가상 시연: 화면 전환·누름·손가락 움직임 없이 바로 바뀐다 (자동 재생도 꺼진 채 시작, site.js) */
   .vd-list, .vd-remote, .vd-finger, .vd-finger svg, .vd-touch, .vd-connect, .vd-key, .vp-page, .vp-app, .vp-item, .vp-toggle, .vp-toggle::after, .vp-status, .demo-state { transition: none; }
+  /* 받기 펼침: 움직임 없이 바로 열고 닫는다 */
+  .js .dl-options, .js .dl.is-open .dl-options, .js .dl-option, .js .dl.is-open .dl-option, .dl-chevron { transition: none; }
+  .js .dl-options, .js .dl-option { transform: none; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(28px); } }
 @keyframes phone-in { from { opacity: 0; transform: translateY(60px) rotate(var(--r)) scale(0.96); } to { opacity: 1; transform: rotate(var(--r)); } }
