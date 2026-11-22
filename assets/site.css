@@ -638,6 +638,8 @@ button.vp-item { cursor: pointer; }
 .ways { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
 .way { padding: 18px 0 22px; border-top: 1px solid var(--border); }
 .way h3 { font-size: 18px; }
+/* Pro 기능 표 (D-235): 제목 옆 작은 알약 — 요금 구역의 Pro와 같은 색 */
+.way-pro { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 18px; vertical-align: 2px; color: var(--on-accent-soft); background: var(--accent-soft); }
 .way p { margin-top: 6px; color: var(--muted); font-size: 15px; line-height: 1.6; }
 @media (max-width: 1000px) {
   .ways-wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; }
