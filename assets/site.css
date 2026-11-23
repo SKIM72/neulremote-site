@@ -764,6 +764,13 @@ button.vp-item { cursor: pointer; }
 }
 .platform.is-you .you-badge { display: block; }
 /* 스토어가 생긴 뒤 예전 길 (APK 직접·웹 앱) */
+/* 스토어 공식 배지 (2026-11-24): 버튼 자리에 같은 높이로, 배지 그림은 손대지 않는다(배지 지침). 둘레 여백은 배지 높이의 1/4 이상 */
+.store-badge { display: inline-flex; align-self: center; justify-content: center; min-height: 50px; padding: 0; border-radius: 10px; transition: transform 0.25s var(--ease); }
+.store-badge img { display: block; height: 50px; width: auto; }
+.store-badge:hover { transform: translateY(-1px); }
+.store-badge:active { transform: scale(0.97); }
+.store-badge:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.platform .store-badge { margin-top: 8px; }
 .platform-alt { display: inline-flex; justify-content: center; font-size: 13px; font-weight: 600; color: var(--muted); }
 /* 한 줄에 칸 하나면 맞출 옆 칸이 없다 — 빈 줄은 뺀다 */
 @media (max-width: 520px) { span.platform-alt[aria-hidden="true"] { display: none; } }
