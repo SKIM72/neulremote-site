@@ -1,0 +1,5 @@
+Contact: mailto:support@neulremote.com
+Expires: 2027-11-23T00:00:00.000Z
+Preferred-Languages: ko, en, ja
+Canonical: https://neulremote.com/.well-known/security.txt
+Policy: https://neulremote.com/en/security/#report

@@ -313,6 +313,11 @@ button { font: inherit; }
 .device.is-ios .device-screen::before {
   content: ""; position: absolute; z-index: 5; left: 33%; bottom: 2.6cqi; width: 34%; height: 1.4cqi; border-radius: 999px; background: var(--ios-home);
 }
+/* iOS 앱 화면 전체 사진(is-full, iOS 시뮬레이터 — App Store 출시 뒤 아이폰 안내·첫 화면): 상태 표시줄·다이내믹 아일랜드가 사진 안에 있어
+   아래 띠·알약 홈을 그리지 않고, 사진에 없는 홈 막대만 바탕에 맞춰(밝으면 어둡게, 어두우면 밝게) 그린다 */
+.device.is-ios.is-full .device-screen { padding: 0; }
+.device.is-ios.is-full .device-screen::after { display: none; }
+.device.is-ios.is-full .device-screen::before { bottom: 2.2cqi; background: #fff; mix-blend-mode: difference; opacity: 0.85; }
 
 /* ---------- 첫 화면 (예전 구성): 칩·큰 제목·설명·버튼 둘, 오른쪽에 기울어진 폰 두 대(실제 S9 화면) ---------- */
 /* 머리글 높이(+ 아래 1px 선)만큼 위로 올려 페이지 맨 위에서 시작한다: 빛이 투명한 머리글 뒤까지 이어져
@@ -857,6 +862,85 @@ html:not(.js) .dl-toggle { display: none; }
 .doc h2 { font-size: 20px; }
 .doc ul { margin: 14px 0 0; padding-left: 20px; display: grid; gap: 10px; font-size: 16px; }
 .doc b { font-weight: 600; }
+
+/* ---------- 보안: 연결 구조 그림 (2026-11-24) — 세 줄, 지나가는 길은 굵은 선 "암호화", 서버가 하는 일은 점선 ---------- */
+.sec-flow { margin: 24px 0 0; padding: 26px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); display: grid; gap: 22px; }
+.sec-flow figcaption { font-weight: 700; font-size: 20px; }
+.sf-row { display: grid; gap: 10px; padding-top: 20px; border-top: 1px solid var(--border); }
+.sf-row h3 { font-size: 15px; font-weight: 700; color: var(--accent); }
+.sf-row p { color: var(--muted); font-size: 15px; }
+.sf-line { display: flex; align-items: center; }
+.sf-node { flex: none; padding: 10px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); font-weight: 600; font-size: 14px; text-align: center; }
+.sf-relay { background: var(--accent-soft); color: var(--on-accent-soft); border-color: transparent; }
+.sf-link { flex: 1; min-width: 44px; position: relative; display: flex; justify-content: center; }
+.sf-link::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; background: var(--accent); border-radius: 2px; }
+.sf-link span { position: relative; padding: 0 8px; background: var(--surface); color: var(--accent); font-size: 12px; font-weight: 600; white-space: nowrap; transform: translateY(-14px); }
+.sf-server { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.sf-srv { background: transparent; border-style: dashed; }
+.sf-signal { color: var(--muted); font-size: 13px; }
+@media (max-width: 560px) {
+  .sec-flow { padding: 22px 18px; }
+  .sf-node { flex: 0 1 auto; max-width: 5.2em; padding: 7px 8px; font-size: 12.5px; word-break: keep-all; }
+  .sf-node.sf-srv { max-width: none; }
+  .sf-link { min-width: 22px; }
+  .sf-link span { font-size: 11px; padding: 0 4px; }
+}
+
+/* ---------- 기업·매장용 (2026-11-24): 문서 페이지와 같은 카드·표, 실제 화면만 ---------- */
+.biz-page { padding-top: 56px; padding-bottom: 120px; max-width: 1040px; }
+.biz-hero h1 { font-size: clamp(32px, 4.6vw, 52px); letter-spacing: -0.035em; line-height: 1.18; }
+.biz-lead { margin-top: 18px; max-width: 44em; color: var(--muted); font-size: 18px; }
+.biz-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 28px; }
+.biz-cta span { color: var(--muted); font-size: 15px; }
+.biz-shot { margin: 36px 0 0; }
+.biz-shot img { width: 100%; height: auto; border-radius: var(--radius-group); border: 1px solid var(--border); box-shadow: var(--shadow); background: var(--surface-2); }
+.biz-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+.biz-block { margin-top: 20px; padding: 32px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-group); }
+.biz-hero + .biz-block { margin-top: 56px; }
+.biz-block h2 { font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -0.02em; }
+.biz-sub { margin-top: 8px; color: var(--muted); font-size: 16px; }
+.biz-h3 { margin-top: 28px; font-size: 17px; }
+.biz-jobs, .biz-steps { list-style: none; counter-reset: biz; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; }
+.biz-jobs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.biz-jobs li, .biz-steps li { counter-increment: biz; position: relative; padding: 18px 20px 18px 58px; border-radius: var(--radius); background: var(--surface-2); }
+.biz-jobs li::before, .biz-steps li::before {
+  content: counter(biz); position: absolute; left: 18px; top: 17px; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 14px;
+}
+.biz-jobs h3, .biz-steps h3, .biz-card h3 { font-size: 16px; font-weight: 700; }
+.biz-jobs p, .biz-steps p, .biz-card p { margin-top: 6px; color: var(--muted); font-size: 15px; }
+.biz-grid { margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.biz-card { padding: 18px 20px; border-radius: var(--radius); background: var(--surface-2); }
+.biz-note, .biz-muted { margin-top: 14px; color: var(--muted); font-size: 14px; }
+.biz-list { margin: 18px 0 0; padding-left: 20px; display: grid; gap: 10px; font-size: 16px; }
+.biz-list b { font-weight: 600; }
+.biz-block .biz-shot { margin-top: 24px; }
+.biz-block > p > .text-link { display: inline-block; margin-top: 16px; }
+.biz-table-wrap { margin-top: 22px; overflow-x: auto; }
+.biz-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.biz-table th, .biz-table td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+.biz-table thead th { color: var(--muted); font-weight: 600; font-size: 14px; }
+.biz-table tbody th { font-weight: 600; }
+.biz-price td { text-align: center; }
+.biz-price thead th:not(:first-child) { text-align: center; color: var(--ink); font-size: 15px; }
+.biz-needs { margin: 14px 0 0; display: grid; gap: 10px; }
+.biz-needs div { display: grid; grid-template-columns: 10em minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.biz-needs dt { font-weight: 600; }
+.biz-needs dd { margin: 0; color: var(--muted); }
+.biz-trial { margin-top: 18px; padding: 16px 20px; border-radius: var(--radius); background: var(--accent-soft); color: var(--on-accent-soft); }
+.biz-trial b { font-weight: 700; }
+.biz-contact p { margin-top: 12px; }
+.biz-contact .btn { margin-top: 6px; }
+.biz-faq { margin-top: 20px; }
+.biz-faq .qa { background: var(--surface-2); border-color: transparent; }
+.plans-biz { margin-top: 10px; text-align: center; }
+@media (max-width: 760px) {
+  .biz-block { padding: 24px 18px; }
+  .biz-jobs, .biz-grid { grid-template-columns: minmax(0, 1fr); }
+  .biz-needs div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .biz-table { font-size: 14px; }
+  .biz-table th, .biz-table td { padding: 10px 8px; }
+}
 
 /* ---------- 사용 안내 (D-083) ---------- */
 .guide { padding-top: 48px; padding-bottom: 120px; }

@@ -30,7 +30,7 @@
 <link rel="icon" href="../../assets/favicon.png?v=a32d083a">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png?v=506800da">
 <link rel="stylesheet" href="../../assets/fonts/jp/fonts.css?v=04bda62d">
-<link rel="stylesheet" href="../../assets/site.css?v=cb7997ef">
+<link rel="stylesheet" href="../../assets/site.css?v=aa3c5f9f">
 <script>var d=document.documentElement;d.classList.add("js");try{var m=localStorage.getItem("neulremote.site.theme");if(m==="light"||m==="dark")d.setAttribute("data-theme",m)}catch(e){}</script>
 <script src="../../assets/site.js?v=40ebedc5" defer></script>
 </head>
@@ -62,6 +62,7 @@
 <main class="doc wrap narrow">
   <h1>NeulRemote のセキュリティ</h1>
   <p>NeulRemote は別の端末の画面を見て操作するアプリなので、セキュリティを最優先にしています。データがどこへ行き、サーバーが何を見られて何を見られないかをまとめました。</p>
+  <figure class="sec-flow" aria-label="接続の3つの経路"><figcaption>接続の3つの経路</figcaption><div class="sf-row sf-row-local"><h3>同じWi‑Fi · USB</h3><div class="sf-line"><span class="sf-node">操作する端末</span><span class="sf-link"><span>暗号化</span></span><span class="sf-node">操作されるスマホ</span></div><p>サーバーを経由しません。同じWi‑Fiでは、最初に一度、両方の画面の6桁の数字を照合してペアリングします。</p></div><div class="sf-row sf-row-direct"><h3>インターネット — 直接</h3><div class="sf-server"><span class="sf-node sf-srv">NeulRemote サーバー</span><span class="sf-signal">接続の準備のみ（TLS）</span></div><div class="sf-line"><span class="sf-node">操作する端末</span><span class="sf-link"><span>暗号化</span></span><span class="sf-node">操作されるスマホ</span></div><p>サーバーはアカウントの確認と接続の準備だけをします。画面・音声・入力はサーバーを通りません。</p></div><div class="sf-row sf-row-relay"><h3>インターネット — 中継</h3><div class="sf-line"><span class="sf-node">操作する端末</span><span class="sf-link"><span>暗号化</span></span><span class="sf-node sf-relay">中継サーバー（TURN）</span><span class="sf-link"><span>暗号化</span></span><span class="sf-node">操作されるスマホ</span></div><p>2台が直接つながらないときだけ経由します。中継は暗号化されたまま渡すだけで、復号する鍵は2台の端末だけが持っています。</p></div></figure>
   <section><h2>画面・音声・入力は端末同士で暗号化</h2><ul><li>画面、音声、タッチやキーボードの入力、ファイル、音声通話は WebRTC（DTLS・SRTP）で 2 台の端末の間を暗号化されたまま行き来します。鍵を持っているのはその 2 台だけです。</li><li>インターネット接続で 2 台が直接つながらないときは NeulRemote の中継サーバー（TURN）を通ります。このときも暗号化されたまま転送するだけなので、サーバーは内容を見ることも保存することもできません。</li></ul></section>
 <section><h2>サーバーが知っていること・知らないこと</h2><ul><li><b>知っていること</b>: アカウント（メールアドレス・名前・パスワードの一方向ハッシュ）、登録した端末と状態（機種・Android バージョン・バッテリー・最終接続）、2 台をつなぐのに必要な情報（どの端末がいつ接続を求めたか）。</li><li><b>知らないこと</b>: 画面の内容、音声、入力した文字、送ったファイル、通話の内容。パスワードそのものも知りません。詳しくは<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</li></ul></section>
 <section><h2>サーバーなしで使う方法</h2><ul><li>同じ Wi‑Fi で接続するか USB で接続すると、アカウントもサーバーも使わずに端末同士で直接つながります。同じ Wi‑Fi では最初の 1 回だけ、両方の画面の 6 桁の数字が同じか確かめてペアリングします。</li></ul></section>
@@ -70,6 +71,7 @@
 <section><h2>アカウントの保護</h2><ul><li>はじめての端末でメールアドレスとパスワードでログインすると、アカウントのメールに送った 6 桁のコードをもう一度確認します。</li><li>パスワードを変えると、他の端末のログインはすべて解除されます。</li><li>Google でログインすると、Google アカウントの 2 段階認証がそのまま適用されます。Google ログインの連携や解除はアカウントのメールでお知らせします。</li><li>NeulRemote がメールや電話でパスワードや確認コードを尋ねることはありません。</li></ul></section>
 <section><h2>サーバーの運用</h2><ul><li>すべての通信は HTTPS、パスワードは一方向ハッシュだけを保存、サーバーはファイアウォールの内側で鍵だけで管理し、バックアップは 30 日後に自動で削除します。</li></ul></section>
 <section><h2>セキュリティの問題を知らせる</h2><ul><li>問題を見つけたら <a href="mailto:support@neulremote.com">support@neulremote.com</a> までお知らせください。</li></ul></section>
+  <section id="report"><h2>セキュリティの問題の報告</h2><ul><li>NeulRemoteでセキュリティの問題を見つけたら、件名に[セキュリティ]と付けて <a href="mailto:support@neulremote.com?subject=%5B%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%5D">support@neulremote.com</a> へお知らせください。</li><li>再現手順と、該当するアプリ・バージョン（Androidアプリ・Web・PCアプリ・サーバー）を書いていただくと早く確認できます。修正前の公開はお控えください。確認できたら修正してお知らせします。</li><li>機械可読の連絡先: <a href="/.well-known/security.txt">/.well-known/security.txt</a></li></ul></section>
 </main>
 <footer class="foot">
   <div class="wrap foot-grid">
@@ -83,6 +85,7 @@
       <a href="../../ja/#pricing">料金</a>
       <a href="../../ja/#start">はじめる</a>
       <a href="../../ja/#faq">よくある質問</a>
+      <a href="../../ja/business/">法人・店舗向け</a>
     </nav>
     <nav class="foot-col" aria-label="サポート">
       <h2>サポート</h2>

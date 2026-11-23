@@ -30,7 +30,7 @@
 <link rel="icon" href="../../assets/favicon.png?v=a32d083a">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png?v=506800da">
 <link rel="stylesheet" href="../../assets/fonts/kr/fonts.css?v=d077108d">
-<link rel="stylesheet" href="../../assets/site.css?v=cb7997ef">
+<link rel="stylesheet" href="../../assets/site.css?v=aa3c5f9f">
 <script>var d=document.documentElement;d.classList.add("js");try{var m=localStorage.getItem("neulremote.site.theme");if(m==="light"||m==="dark")d.setAttribute("data-theme",m)}catch(e){}</script>
 <script src="../../assets/site.js?v=40ebedc5" defer></script>
 </head>
@@ -62,6 +62,7 @@
 <main class="doc wrap narrow">
   <h1>NeulRemote security</h1>
   <p>NeulRemote lets one device see and control another, so security comes first. Here is where your data goes, and what the server can and can't see.</p>
+  <figure class="sec-flow" aria-label="Three ways a connection goes"><figcaption>Three ways a connection goes</figcaption><div class="sf-row sf-row-local"><h3>Same Wi‑Fi · USB</h3><div class="sf-line"><span class="sf-node">Controlling device</span><span class="sf-link"><span>Encrypted</span></span><span class="sf-node">Controlled phone</span></div><p>No server in between. On the same Wi‑Fi, the first time you pair by matching a six-digit number on both screens.</p></div><div class="sf-row sf-row-direct"><h3>Internet — direct</h3><div class="sf-server"><span class="sf-node sf-srv">NeulRemote server</span><span class="sf-signal">Setup only (TLS)</span></div><div class="sf-line"><span class="sf-node">Controlling device</span><span class="sf-link"><span>Encrypted</span></span><span class="sf-node">Controlled phone</span></div><p>The server only checks the account and sets up the connection. Screen, sound and input never pass through it.</p></div><div class="sf-row sf-row-relay"><h3>Internet — relay</h3><div class="sf-line"><span class="sf-node">Controlling device</span><span class="sf-link"><span>Encrypted</span></span><span class="sf-node sf-relay">Relay server (TURN)</span><span class="sf-link"><span>Encrypted</span></span><span class="sf-node">Controlled phone</span></div><p>Only when the two devices can't reach each other directly. The relay forwards encrypted data; only the two devices hold the keys.</p></div></figure>
   <section><h2>Screen, sound and input are encrypted between devices</h2><ul><li>The screen, sound, touch and keyboard input, files and voice calls travel encrypted between the two devices with WebRTC (DTLS and SRTP). Only those two devices hold the keys.</li><li>Over the internet, if the devices can't reach each other directly, the connection goes through the NeulRemote relay server (TURN). It only forwards the encrypted bytes, so the server can't read or store the session.</li></ul></section>
 <section><h2>What the server knows — and what it doesn't</h2><ul><li><b>It knows</b>: your account (email, name, a one-way hash of your password), your registered devices and their status (model, Android version, battery, last seen) and what's needed to link two devices (which device asked to connect, and when).</li><li><b>It doesn't know</b>: what's on the screen, the sound, what you type, the files you send or what's said on a call. It never sees your password itself. Details are in the <a href="../privacy/">privacy policy</a>.</li></ul></section>
 <section><h2>Using NeulRemote without the server</h2><ul><li>On the same Wi‑Fi, or over USB, devices connect directly — no account, no server. The first time on Wi‑Fi you pair by checking that both screens show the same six digits.</li></ul></section>
@@ -70,6 +71,7 @@
 <section><h2>Protecting your account</h2><ul><li>Signing in with your email and password on a device for the first time asks for a six-digit code sent to your account email.</li><li>Changing your password signs out your other devices.</li><li>With Google sign-in, your Google account's 2-step verification applies. We email you when Google sign-in is added or removed.</li><li>NeulRemote never asks for your password or codes by email or phone.</li></ul></section>
 <section><h2>Running the server</h2><ul><li>HTTPS for every connection, one-way hashed passwords, a firewalled server managed with keys only, and backups deleted automatically after 30 days.</li></ul></section>
 <section><h2>Report a security issue</h2><ul><li>Found a problem? Please email <a href="mailto:support@neulremote.com">support@neulremote.com</a>.</li></ul></section>
+  <section id="report"><h2>Report a security issue</h2><ul><li>If you find a security issue in NeulRemote, email <a href="mailto:support@neulremote.com?subject=%5BSecurity%5D">support@neulremote.com</a> with [Security] in the subject.</li><li>Steps to reproduce and the affected app or version (Android app, web, PC app, server) help us check it quickly. Please don't publish it before it is fixed. Once confirmed, we will fix it and let you know.</li><li>Machine-readable contact: <a href="/.well-known/security.txt">/.well-known/security.txt</a></li></ul></section>
 </main>
 <footer class="foot">
   <div class="wrap foot-grid">
@@ -83,6 +85,7 @@
       <a href="../../en/#pricing">Pricing</a>
       <a href="../../en/#start">Get started</a>
       <a href="../../en/#faq">FAQ</a>
+      <a href="../../en/business/">For business</a>
     </nav>
     <nav class="foot-col" aria-label="Support">
       <h2>Support</h2>
